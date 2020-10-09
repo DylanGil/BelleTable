@@ -1,2 +1,2 @@
 # BelleTable
-Test Site Belle Table
+Site Belle Table
