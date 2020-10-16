@@ -41,24 +41,24 @@
 </script>
 
 <style type="text/css">.desactive {background-color: inherit;}</style> <!-- permet de enlever la couleur de la page active lorsqu'on active un sous menu !-->
-
+<?php include("../inscriptionPHP.php"); ?>
 <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>RDA AQUARIA</h3>
+                <h3>BelleTable</h3>
             </div>
 
             <a href="index3.html" class="header-sidebar">
                 <img src="images/logo.jpg" alt="Logo" class="brand-image img-circle" style="opacity: .8">
-                <span class="brand-text font-weight-light">Panel Admin V.3</span>
+                <span class="brand-text font-weight-light">Panel Admin</span>
             </a>
 
             <div class="hr"></div>
 
             <div class="header-sidebar">
-                <img src="https://minotar.net/avatar/Gold_Natoun" width="40" alt="Mettre Skin">
-                <a href="#" class="">Gold_Natoun </a>
+                
+                <a href="#" class=""><?php print_r($_SESSION['nom'] . " " . $_SESSION['prenom']); ?> </a>
             </div>
 
             <div class="hr"></div>
@@ -80,14 +80,11 @@
                         <li class="maintenance" style="">
                             <a href="activer-maintenance.php"><i class="fas fa-cog"></i> Maintenance</a>
                         </li>
-                        <li class="election">
-                            <a href="election.php"><i class="fas fa-user-tie"></i> Election</a>
-                        </li>
                     </ul>
                 </li>
 
                 <li class="couleur-du-site">
-                    <a href="couleur-du-site.php"><i class="fas fa-paint-brush"></i> Couleur du site <span class="right badge badge-danger">New</span></a>
+                    <a href="couleur-du-site.php"><i class="fas fa-paint-brush"></i> Gérer les articles <span class="right badge badge-danger">New</span></a>
                 </li>
                 <li class="add-news">
                     <a href="ajouter-news.php"><i class="fas fa-pencil-alt"></i> News</a>

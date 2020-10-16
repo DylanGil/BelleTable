@@ -51,8 +51,8 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box2" >
                       <div class="text-box">
-                        <h3>53%</h3>
-                        <p>De participation</p>
+                        <h3>53</h3>
+                        <p>Articles vendu</p>
                       </div>
                       <div class="icon-box">
                         
@@ -121,7 +121,7 @@
                                 <br>
                                 <img class="avatar" width='30' src=""/> 
                             </a>    
-                            <span class="message-e">Salut dylan's bienvenue dans ce nouveau panel ! </span>
+                            <span class="message-e">Salut dylan's bienvenue dans ce nouveau panel</span>
 
                             <br>
                         </div>
@@ -134,55 +134,6 @@
                         </div>
                     </form>
 
-                </div>
-
-                <div class="commentaires-box-w-header">
-                    <div class="header-chat">
-                        <center><h6>Derniers Commentaires</h6></center>
-                    </div>  
-                    <div class="commentaire-box-wi-header">
-                        <div class="commentaire" style="background-color: #F2F2F2;">
-                            <center>
-                                <a href="#" style="background-color: #9A9A9A ; color: white ; border-radius : 6px; padding: 0.5em; white-space: nowrap;" class="bold">
-                                    <img width='30' src="https://minotar.net/helm/Gold_Natoun" onmouseover="this.src='https://minotar.net/avatar/Gold_Natoun'" onmouseout="this.src='https://minotar.net/helm/Gold_Natoun'"/> 
-                                    <span class="Gouverneur">Gouverneur</span>
-                                    <span>Gold_Natoun</span>
-                                </a>
-                                <br>
-                                <span>06/10/2020</span>
-                                <br> 
-                                <span class="textCommentaire">Ceci est un commentaire</span>
-                            </center>
-                        </div>
-                        <br>
-                        <div class="commentaire" style="background-color: #F2F2F2;">
-                            <center>
-                                <a href="#" style="background-color: #9A9A9A ; color: white ; border-radius : 6px; padding: 0.5em; white-space: nowrap;" class="bold">
-                                    <img width='30' src="https://minotar.net/helm/Gold_Natoun" onmouseover="this.src='https://minotar.net/avatar/Gold_Natoun'" onmouseout="this.src='https://minotar.net/helm/Gold_Natoun'"/> 
-                                    <span class="Gouverneur">Gouverneur</span>
-                                    <span>Gold_Natoun</span>
-                                </a>
-                                <br>
-                                <span>06/10/2020</span>
-                                <br> 
-                                <span class="textCommentaire">Ceci est un commentaire</span>
-                            </center>
-                        </div>
-                        <br>
-                        <div class="commentaire" style="background-color: #F2F2F2;">
-                            <center>
-                                <a href="#" style="background-color: #9A9A9A ; color: white ; border-radius : 6px; padding: 0.5em; white-space: nowrap;" class="bold">
-                                    <img width='30' src="https://minotar.net/helm/Gold_Natoun" onmouseover="this.src='https://minotar.net/avatar/Gold_Natoun'" onmouseout="this.src='https://minotar.net/helm/Gold_Natoun'"/> 
-                                    <span class="Gouverneur">Gouverneur</span>
-                                    <span>Gold_Natoun</span>
-                                </a>
-                                <br>
-                                <span>06/10/2020</span>
-                                <br> 
-                                <span class="textCommentaire">Ceci est un commentaire</span>
-                            </center>
-                        </div>
-                    </div>
                 </div>
             </div>
             <br><br>
@@ -200,12 +151,12 @@
                   </tr>
                   <tr align="center">
                     <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>mettre dans les log les modification des bio</td>
+                    <td>blablablabla</td>
                     <td>A FAIRE</td>
                   </tr align="center">
                   <tr align="center">
                     <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>rendre les "dernier commentaire" sur le profil de quelqu'un lié par son UUID et non son pseudo</td>
+                    <td>blablabla</td>
                     <td>A FAIRE</td>
                   </tr>
                   <tr align="center">
@@ -215,12 +166,12 @@
                   </tr>
                   <tr align="center">
                     <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>rendre la page gouvernement dynamique</td>
+                    <td>rendre la page blablabla  dynamique</td>
                     <td>A FAIRE</td>
                   </tr>
                   <tr align="center">
                     <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>esseyer de rendre la page ville dynamique</td>
+                    <td>esseyer de rendre la page blablabla2 dynamique</td>
                     <td>A FAIRE</td>
                   </tr>
                   <tr align="center">
