@@ -105,11 +105,11 @@
                     <div class="chat-box-wi-header">
                         <div class="utilisateur-d">
                             <a href="#" class="destinataire">
-                                <span>Skyrise_</span>
+                                <span>Dylan's</span>
                                 <br>
-                                <img class="avatar" width='30' src="https://minotar.net/helm/fleurdeskyrise" onmouseover="this.src='https://minotar.net/avatar/fleurdeskyrise'" onmouseout="this.src='https://minotar.net/helm/fleurdeskyrise'"/> 
+                                <img class="avatar" width='30' src=""/> 
                             </a>
-                            <span class="message-d">Woaw mais quel est cette merveille GROS BG ?! </span>
+                            <span class="message-d">Saluuuutt </span>
                         </div>
 
                         <br>
@@ -117,11 +117,11 @@
                         <div class="utilisateur-e">
                             
                             <a href="#" class="expediteur" >
-                                <span class="pseudo-expediteur">Gold_Natoun</span>
+                                <span class="pseudo-expediteur">Nathan</span>
                                 <br>
-                                <img class="avatar" width='30' src="https://minotar.net/helm/Gold_Natoun" onmouseover="this.src='https://minotar.net/avatar/Gold_Natoun'" onmouseout="this.src='https://minotar.net/helm/Gold_Natoun'"/> 
+                                <img class="avatar" width='30' src=""/> 
                             </a>    
-                            <span class="message-e">Salut skyrise bienvenue dans ce nouveau panel ! </span>
+                            <span class="message-e">Salut dylan's bienvenue dans ce nouveau panel ! </span>
 
                             <br>
                         </div>
