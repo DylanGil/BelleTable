@@ -50,7 +50,7 @@
 									<a href="admin">Panel Admin</a>
 								</li> 
 							<?php endif; ?>
-							<span style="border-top: 2px solid #F2F2F2;"></span>
+							<span class="line"></span>
 							<li>
 								<a href="?infos=<?php echo $page; ?>&deconnecter=1">Se deconnecter</a>
 							</li>
