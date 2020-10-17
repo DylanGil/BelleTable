@@ -94,98 +94,114 @@
                 </div>  
             </section>
             <br>
+             <?php 
+              @$chat = $_POST['chat'];
+              @$email = $_SESSION['email'];
+
+              if(isset($_POST['send'])) 
+                {
+                  $requete = "INSERT INTO message(fk_utilisateur, message) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$chat')";
+                  mysqli_query($bdd, $requete);
+                } 
+              $afficherMessage = "SELECT prenom, message FROM login, message WHERE fk_utilisateur = id" ;
+              $res = mysqli_query($bdd, $afficherMessage);
+            ?>
             <h2>ChatBox - Commentaires  </h2>
-            <div class="Chatbox-Commentaires">
+            <div class="Chat">
+                <div class="chat-w-header">
+                  <div class="header-chat">
+                    <center><h6>ChatBox</h6></center>
+                  </div> 
+                  <?php while($fetch = mysqli_fetch_assoc($res)): ?> 
+                   
+                    <?php  
+                      if($fetch['prenom']==$_SESSION['prenom'])
+                        {
+                          $utilisateur = "utilisateur-e" ;
+                          $expediteur = "expediteur" ;
+                          $message = "message-e" ;
+                        }
+                      else 
+                        {
+                          $utilisateur = "utilisateur-d" ;
+                          $expediteur = "destinataire" ;
+                          $message = "message-d" ;
+                        }
+                    ?>
 
-                <div class="chat-box-w-header">
-                    <div class="header-chat">
-                        <center><h6>ChatBox</h6></center>
-                    </div> 
-
-                    <div class="chat-box-wi-header">
-                        <div class="utilisateur-d">
-                            <a href="#" class="destinataire">
-                                <span>Dylan's</span>
+                    <div class="chat-wi-header">
+                        <div class="<?php echo $utilisateur ?>">
+                            <a href="#" class="<?php echo $expediteur ?>">
+                                <span><?php echo $fetch['prenom'] ?></span>
                                 <br>
                                 <img class="avatar" width='30' src=""/> 
                             </a>
-                            <span class="message-d">Saluuuutt </span>
-                        </div>
-
-                        <br>
-
-                        <div class="utilisateur-e">
-                            
-                            <a href="#" class="expediteur" >
-                                <span class="pseudo-expediteur">Nathan</span>
-                                <br>
-                                <img class="avatar" width='30' src=""/> 
-                            </a>    
-                            <span class="message-e">Salut dylan's bienvenue dans ce nouveau panel</span>
-
-                            <br>
-                        </div>
+                            <span class="<?php echo $message ?>"><?php echo $fetch['message']; ?> </span>
+                        </div>            
                     </div>
-
-                    <form method="POST" action="">
-                        <div class="input-group-append">
-                            <input type="texte" name="chat" class="champ form-control" >
-                            <input type="submit" name="send" class="submit-chat">
-                        </div>
-                    </form>
-
+                    
+                  <?php endwhile; ?>
+                  <form method="POST" action="">
+                      <div class="input-group-append">
+                          <input type="texte" name="chat" class="champ form-control" >
+                          <input type="submit" name="send" class="submit-chat">
+                      </div>
+                  </form>
                 </div>
             </div>
+
             <br><br>
-            <div class="to-do-list">
-                <table border="1">
-                  <tr>
-                    <th colspan="3" class="to-do-list-header">
-                      <center><h6>TO-DO-LIST</h6></center>
-                    </th>
-                  </tr>
-                  <tr align="center">
-                    <th>fini ?</th>
-                    <th>Tâches</th>
-                    <th>Status</th>
-                  </tr>
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>blablablabla</td>
-                    <td>A FAIRE</td>
-                  </tr align="center">
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>blablabla</td>
-                    <td>A FAIRE</td>
-                  </tr>
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>modifier automatiquement les nouveau pseudo</td>
-                    <td>A FAIRE</td>
-                  </tr>
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>rendre la page blablabla  dynamique</td>
-                    <td>A FAIRE</td>
-                  </tr>
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>esseyer de rendre la page blablabla2 dynamique</td>
-                    <td>A FAIRE</td>
-                  </tr>
-                  <tr align="center">
-                    <td><a><i class="fal fa-stop"></i></a></td>
-                    <td>modifier le systeme admin</td>
-                    <td>A FAIRE</td>
-                  </tr>
-                </table>
-                <form method="POST" action="">
-                  <div class="input-group-append">
-                      <input type="texte" name="chat" class="champ form-control" >
-                      <input type="submit" name="send" class="submit-chat" value="rajouter">
-                  </div>
-                </form>
+            <div class="to-div-list">
+              <div class="to-do-list">
+                  <table border="1">
+                    <tr>
+                      <th colspan="3" class="to-do-list-header">
+                        <center><h6>TO-DO-LIST</h6></center>
+                      </th>
+                    </tr>
+                    <tr align="center">
+                      <th>fini ?</th>
+                      <th>Tâches</th>
+                      <th>Status</th>
+                    </tr>
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>blablablabla</td>
+                      <td>A FAIRE</td>
+                    </tr align="center">
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>blablabla</td>
+                      <td>A FAIRE</td>
+                    </tr>
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>modifier automatiquement les nouveau pseudo</td>
+                      <td>A FAIRE</td>
+                    </tr>
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>rendre la page blablabla  dynamique</td>
+                      <td>A FAIRE</td>
+                    </tr>
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>esseyer de rendre la page blablabla2 dynamique</td>
+                      <td>A FAIRE</td>
+                    </tr>
+                    <tr align="center">
+                      <td><a><i class="fal fa-stop"></i></a></td>
+                      <td>modifier le systeme admin</td>
+                      <td>A FAIRE</td>
+                    </tr>
+                  </table>
+                  <form method="POST" action="">
+                    <div class="input-group-append">
+                        <input type="texte" name="chat" class="champ form-control" >
+                        <input type="submit" name="send" class="submit-chat" value="rajouter">
+                    </div>
+                  </form>
+              </div>
             </div>
             <br>
             <h2>Lorem Ipsum Dolor</h2>
