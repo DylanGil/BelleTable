@@ -337,6 +337,7 @@ textarea {padding: 10px;
 	border: 2px solid #02b8dd;
 
 }
+.line{border-top: 2px solid #F2F2F2;}
 .contacter label {color: white;}
 .section-contact {background-color: #343A40; padding: 15px;}
 .h3contact {color: white; margin-bottom: 15px}
@@ -352,6 +353,11 @@ textarea {padding: 10px;
 .b-submit {display: flex; flex-direction: row;}
 .submit {display: flex; flex-direction: column;}
 .divsm {display: flex; flex-direction: column; align-items: flex-end;}
+.inscriptionform1 {display: flex; flex-direction: row; justify-content: space-around; width: 255px;}
+.inscription-form1 {display: flex; flex-direction: column; width: 255px;}
+.inscription-form2 {display: flex; flex-direction: column; width: 255px;}
+.connexion {color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px;}
+.connexion:hover {color: white; background-color: #ff7a00;}
 /* FOOTER */
 
 footer
