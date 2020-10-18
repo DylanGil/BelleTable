@@ -50,15 +50,15 @@
             </div>
 
             <a href="index3.html" class="header-sidebar">
-                <img src="images/logo.jpg" alt="Logo" class="brand-image img-circle" style="opacity: .8">
-                <span class="brand-text font-weight-light">Panel Admin</span>
+                <img src="images/logo.png" alt="Logo" class="brand-image img-circle" style="opacity: .8">
+                <span>Panel Admin</span>
             </a>
 
             <div class="hr"></div>
 
             <div class="header-sidebar">
                 
-                <a href="#" class=""><?php print_r($_SESSION['nom'] . " " . $_SESSION['prenom']); ?> </a>
+                <a href="#" class=""><?php echo $_SESSION['nom'] . " " . $_SESSION['prenom'] ; ?> </a>
             </div>
 
             <div class="hr"></div>
@@ -71,35 +71,40 @@
                 </li>
 
                 <li class="menuclick dropright">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-users-cog"></i> Administration </a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fad fa-analytics"></i> Statistique </a>
                     <ul class="collapse list-unstyled sous-menu" id="homeSubmenu">
-                        <li class="membre">
-                            <a href="membre.php"><i class="fas fa-users"></i> Liste des membres inscrit</a>
+                        <li class="articles-vendu">
+                            <a href="articles-vendu.php"><i class="far fa-dollar-sign"></i> Articles vendu</a>
                         </li>
 
-                        <li class="maintenance" style="">
-                            <a href="activer-maintenance.php"><i class="fas fa-cog"></i> Maintenance</a>
+                        <li class="liste-panier" style="">
+                            <a href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
                         </li>
+
+                        <li class="liste-membre">
+                            <a href="liste-membre.php"><i class="fas fa-users"></i> Liste des membres inscrits</a>
+                        </li>
+
                     </ul>
                 </li>
 
-                <li class="couleur-du-site">
-                    <a href="couleur-du-site.php"><i class="fas fa-paint-brush"></i> Gérer les articles <span class="right badge badge-danger">New</span></a>
+                <li class="articles">
+                    <a href="articles.php"><i class="fas fa-paint-brush"></i> Gérer les articles </a>
                 </li>
-                <li class="add-news">
-                    <a href="ajouter-news.php"><i class="fas fa-pencil-alt"></i> News</a>
+                <li class="offre">
+                    <a href="offre.php"><i class="fas fa-pencil-alt"></i> Ajouter un offre d'emploie </a>
                 </li>
-                <li class="log">
-                    <a href="log.php"><i class="fas fa-history"></i> Log</a>
+                <li class="contact">
+                    <a href="contact.php"><i class="fas fa-history"></i> Contact </a>
                 </li>
             </ul>
         
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Retourner sur [page personalisé]</a>
+                    <a href="#" class="back">Retourner sur le site</a>
                 </li>
                 <li>
-                    <a href="#" class="article">Retourner sur le site</a>
+                    <a href="../?infos=index.php&deconnecter=1" class="deconnexion">Se deconnecter</a>
                 </li>
             </ul>
         </nav>

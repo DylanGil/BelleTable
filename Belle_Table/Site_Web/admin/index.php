@@ -35,15 +35,15 @@
                   <div class="col-lg-3 col-6">
                     <div class="info-box box1" align="center">
                       <div class="text-box">
-                        <h3>23</h3>
+                        <h3>223</h3>
 
-                        <p>Utilisateurs</p>
+                        <p>Articles</p>
                       </div>
                       <div class="icon-box">
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/utilisateur.php">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="stats/utilisateur.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -58,7 +58,7 @@
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/taux-participation.php">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="stats/taux-participation.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -66,14 +66,14 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box3">
                       <div class="text-box">
-                        <h3>3</h3>
-                        <p>News</p>
+                        <h3>25</h3>
+                        <p>Paniers en cours</p>
                       </div>
                       <div class="icon-box">
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/news.php">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="stats/news.php">More d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -82,127 +82,168 @@
                     <div class="info-box box4">
                       <div class="text-box">
                         <h3>25</h3>
-                        <p>Commentaires</p>
+                        <p>Utilisateurs</p>
                       </div>
                       <div class="icon-box">   
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/commentaire.php">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="stats/commentaire.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>  
             </section>
             <br>
-             <?php 
-              @$chat = $_POST['chat'];
+            <?php 
               @$email = $_SESSION['email'];
+              @$chat = $_POST['chat'];
+              @$tache = $_POST['tache'];
 
               if(isset($_POST['send'])) 
                 {
                   $requete = "INSERT INTO message(fk_utilisateur, message) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$chat')";
                   mysqli_query($bdd, $requete);
                 } 
-              $afficherMessage = "SELECT prenom, message FROM login, message WHERE fk_utilisateur = id" ;
-              $res = mysqli_query($bdd, $afficherMessage);
+
+              $afficherMessage = "SELECT id_message, prenom, message FROM login, message WHERE fk_utilisateur = id ORDER BY id_message ASC" ;
+              $resAfficherMessage = mysqli_query($bdd, $afficherMessage);
+
+              #######################TO DO LIST################################################
+
+              if(isset($_POST['send-tdl'])) 
+                {
+                  $requete = "INSERT INTO to_do_list(fk_utilisateur, tache, realiser) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$tache', 0)";
+                  mysqli_query($bdd, $requete);
+                } 
+              $afficherTache = "SELECT id_tdl, prenom, tache, realiser FROM login, to_do_list WHERE fk_utilisateur = id ORDER BY id_tdl ASC" ;
+              $resAfficherTache = mysqli_query($bdd, $afficherTache);
+              if(isset($_GET['realiser']))
+              {
+                $id = $_GET['id'];
+                $url = "/cerfal/1erPPE/BelleTable/Belle_Table/Site_Web/admin/index.php";
+                if($_GET['realiser']=="a faire")
+                {
+                  $modifStatus = "UPDATE to_do_list SET realiser = 0 WHERE id_tdl = $id ";
+                  mysqli_query($bdd, $modifStatus);
+                  ?> 
+                    <script language="Javascript">
+                      document.location.replace("<?php echo $url ?>"); 
+                    </script> 
+                  <?php
+                }
+                if($_GET['realiser']=="en cours")
+                {
+                  $modifStatus = "UPDATE to_do_list SET realiser = 1 WHERE id_tdl = $id ";
+                  mysqli_query($bdd, $modifStatus);
+                  ?> 
+                    <script language="Javascript">
+                      document.location.replace("<?php echo $url ?>"); 
+                    </script> 
+                  <?php
+                }
+                if($_GET['realiser']=="fini")
+                {
+                  $modifStatus = "UPDATE to_do_list SET realiser = 2 WHERE id_tdl = $id ";
+                  mysqli_query($bdd, $modifStatus);
+                  ?> 
+                    <script language="Javascript">
+                      document.location.replace("<?php echo $url ?>"); 
+                    </script> 
+                  <?php
+                }
+              }
             ?>
+
             <h2>ChatBox - Commentaires  </h2>
             <div class="Chat">
-                <div class="chat-w-header">
-                  <div class="header-chat">
-                    <center><h6>ChatBox</h6></center>
-                  </div> 
-                  <?php while($fetch = mysqli_fetch_assoc($res)): ?> 
-                   
-                    <?php  
-                      if($fetch['prenom']==$_SESSION['prenom'])
-                        {
-                          $utilisateur = "utilisateur-e" ;
-                          $expediteur = "expediteur" ;
-                          $message = "message-e" ;
-                        }
-                      else 
-                        {
-                          $utilisateur = "utilisateur-d" ;
-                          $expediteur = "destinataire" ;
-                          $message = "message-d" ;
-                        }
-                    ?>
+              <div class="chat-w-header">
+                <div class="header-chat">
+                  <center><h6>Chat Admin</h6></center>
+                </div> 
+                  <div class="chat-wi-header">
+                    <?php while($fetch = mysqli_fetch_assoc($resAfficherMessage)): ?> 
+                 
+                      <?php  
+                        if($fetch['prenom']==$_SESSION['prenom'])
+                          {
+                            $utilisateur = "utilisateur-e" ;
+                            $expediteur = "expediteur" ;
+                            $message = "message-e" ;
+                          }
+                        else 
+                          {
+                            $utilisateur = "utilisateur-d" ;
+                            $expediteur = "destinataire" ;
+                            $message = "message-d" ;
+                          }
+                      ?>
+                      <div class="<?php echo $utilisateur ?>">
+                          <a href="#" class="<?php echo $expediteur ?>">
+                              <span><?php echo $fetch['prenom'] ?></span>
+                              <br>
+                              <img class="avatar" width='30' src=""/> 
+                          </a>
+                          <span class="<?php echo $message ?>"><?php echo $fetch['message']; ?> </span><br>
+                      </div>   
 
-                    <div class="chat-wi-header">
-                        <div class="<?php echo $utilisateur ?>">
-                            <a href="#" class="<?php echo $expediteur ?>">
-                                <span><?php echo $fetch['prenom'] ?></span>
-                                <br>
-                                <img class="avatar" width='30' src=""/> 
-                            </a>
-                            <span class="<?php echo $message ?>"><?php echo $fetch['message']; ?> </span>
-                        </div>            
+                    <?php endwhile; ?>
+                  </div>    
+                <form method="POST" action="">
+                    <div class="input-group-append">
+                        <input type="texte" name="chat" class="champ form-control" >
+                        <input type="submit" name="send" class="submit-chat">
                     </div>
-                    
-                  <?php endwhile; ?>
-                  <form method="POST" action="">
-                      <div class="input-group-append">
-                          <input type="texte" name="chat" class="champ form-control" >
-                          <input type="submit" name="send" class="submit-chat">
-                      </div>
-                  </form>
-                </div>
+                </form>
+              </div>
             </div>
 
             <br><br>
             <div class="to-div-list">
               <div class="to-do-list">
-                  <table border="1">
-                    <tr>
-                      <th colspan="3" class="to-do-list-header">
-                        <center><h6>TO-DO-LIST</h6></center>
-                      </th>
-                    </tr>
+                <table class="tdl" border="1">
+                  <tr>
+                    <th colspan="4" class="to-do-list-header">
+                      <center><h6>TO-DO-LIST</h6></center>
+                    </th>
+                  </tr>
+                  <tr align="center">
+                    <th>Changer le status</th>
+                    <th>crée par</th>
+                    <th>Tâches</th>
+                    <th>Status</th>
+                  </tr>
+
+                  <?php while($tache = mysqli_fetch_assoc($resAfficherTache)): ?> 
+                    <?php $idtdl = $tache['id_tdl']; ?>
+
                     <tr align="center">
-                      <th>fini ?</th>
-                      <th>Tâches</th>
-                      <th>Status</th>
+                      <td style="text-align: center;">
+                        <a href="?realiser=a faire&id=<?php echo $idtdl ?>">a faire <i class="far fa-play"></i></a>
+                        <br>
+                        <a href="?realiser=en cours&id=<?php echo $idtdl ?>">en cours <i class="far fa-clock"></i></a>
+                        <br>
+                        <a href="?realiser=fini&id=<?php echo $idtdl ?>">fini <i class="far fa-check"></i></a>
+                      </td>
+                      <td><?php echo $tache['prenom']; ?></td>
+                      <td><?php echo $tache['tache']; ?></td>
+                      <td>
+                        <?php 
+                          if($tache['realiser']==0){echo "A FAIRE";} 
+                          if($tache['realiser']==1){echo "EN COURS";}
+                          if($tache['realiser']==2){echo "FINI";} 
+                        ?>
+                      </td>
                     </tr>
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>blablablabla</td>
-                      <td>A FAIRE</td>
-                    </tr align="center">
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>blablabla</td>
-                      <td>A FAIRE</td>
-                    </tr>
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>modifier automatiquement les nouveau pseudo</td>
-                      <td>A FAIRE</td>
-                    </tr>
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>rendre la page blablabla  dynamique</td>
-                      <td>A FAIRE</td>
-                    </tr>
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>esseyer de rendre la page blablabla2 dynamique</td>
-                      <td>A FAIRE</td>
-                    </tr>
-                    <tr align="center">
-                      <td><a><i class="fal fa-stop"></i></a></td>
-                      <td>modifier le systeme admin</td>
-                      <td>A FAIRE</td>
-                    </tr>
-                  </table>
-                  <form method="POST" action="">
-                    <div class="input-group-append">
-                        <input type="texte" name="chat" class="champ form-control" >
-                        <input type="submit" name="send" class="submit-chat" value="rajouter">
-                    </div>
-                  </form>
+                  <?php endwhile; ?>
+                </table>
+                <form method="POST" action="">
+                  <div class="input-group-append">
+                      <input style="border-radius: inherit;" type="texte" name="tache" class="champ form-control" >
+                      <input type="submit" name="send-tdl" class="submit-chat" value="rajouter">
+                  </div>
+                </form>
               </div>
-            </div>
+            </div> 
             <br>
             <h2>Lorem Ipsum Dolor</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

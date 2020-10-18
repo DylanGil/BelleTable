@@ -44,10 +44,9 @@
 						<input type="tel" name="tel" placeholder="601020304" pattern="[0-9]{9}" required><br><br>
 						<p style="font-size: 12px; position: relative; right: 20px;">Obligatoire*</p>
 					
-						<input type="submit" value="Envoyer" class="button-2" name="monboutinscription" style="border: 0; position: relative; right: 20px;" >
+						<input type="submit" value="S'inscrire" class="connexion-submit" name="monboutinscription" style=" position: relative; right: 20px;" > <a class="connexion" style="position: relative; right: 20px;" href="inscription.php">J'ai deja un compte</a>
 					</form>
 					<br>
-					<a class="connexion" style="position: relative; right: 20px;" href="inscription.php">J'ai deja un compte</a>
 				</center>
 
 			<?php else: ?>
@@ -60,11 +59,10 @@
 						<label for="mdp2">Mot de passe: </label><br>
 						<input type="password" name="mdp" id="mdp2" placeholder="Mot de passe" required><br><br>
 						<br>
-						<input type="submit" value="Envoyer" class="button-2" name="monboutconnexion" style="border: 0;">
+						<input type="submit" value="Se connecter" class="connexion-submit" name="monboutconnexion"> <a class="connexion" href="?connexion=inscription">S'inscrire</a>
 					</form>
 				</center>
 				<br>
-				<center><a class="connexion" href="?connexion=inscription">S'inscrire</a></center>
 			<?php endif; ?>
 		</div>
 	</section>
