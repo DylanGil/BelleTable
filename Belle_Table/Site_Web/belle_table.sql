@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 mars 2020 à 11:21
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le :  Dim 18 oct. 2020 à 02:44
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,24 +25,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `connexion`
+-- Structure de la table `login`
 --
 
-DROP TABLE IF EXISTS `connexion`;
-CREATE TABLE IF NOT EXISTS `connexion` (
-  `login` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL,
-  PRIMARY KEY (`login`,`mdp`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `telephone` int(11) DEFAULT NULL,
+  `mdp` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `admin` int(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `connexion`
+-- Déchargement des données de la table `login`
 --
 
-INSERT INTO `connexion` (`login`, `mdp`) VALUES
-('$log', '$mdp'),
-('prof', 'prof'),
-('toto', 'toto');
+INSERT INTO `login` (`id`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`) VALUES
+(1, 'admin', 'admin', 651206977, 'admin', 'natsu2paris@yopmail.com', 1),
+(5, 'test', 'test', 651206977, 'test', 'qwerty@gmail.com', 0),
+(7, 'Partouche', 'Nathan', 606060606, 'nathan', 'nathanpartouche@hotmail.fr', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_utilisateur` int(11) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_message`)
+) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `message`
+--
+
+INSERT INTO `message` (`id_message`, `fk_utilisateur`, `message`) VALUES
+(69, 5, 'oh cool  sa marche'),
+(65, 7, 'salut !'),
+(70, 1, 'oh cool  sa marche');
 
 -- --------------------------------------------------------
 
@@ -110,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   `reponse` varchar(200) NOT NULL,
   `verif` int(50) NOT NULL,
   PRIMARY KEY (`idr`)
-) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=133 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -240,7 +268,15 @@ INSERT INTO `reponse` (`idr`, `idq`, `reponse`, `verif`) VALUES
 (121, 39, 'sdcsdc', 1),
 (122, 39, 'qd', 0),
 (123, 39, 'sdvdvvdsdcdsvcvcv', 0),
-(124, 39, 'sdvs', 0);
+(124, 39, 'sdvs', 0),
+(125, 39, 'Sidney', 1),
+(126, 39, 'Paris', 0),
+(127, 39, 'Londre', 0),
+(128, 39, 'Deauville', 0),
+(129, 39, 'Sidney', 1),
+(130, 39, 'Paris', 0),
+(131, 39, 'Londre', 0),
+(132, 39, 'Deauville', 0);
 
 -- --------------------------------------------------------
 
@@ -252,11 +288,11 @@ DROP TABLE IF EXISTS `resultat`;
 CREATE TABLE IF NOT EXISTS `resultat` (
   `idqcm` int(50) NOT NULL AUTO_INCREMENT,
   `login` varchar(200) NOT NULL,
-  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `date` datetime DEFAULT current_timestamp(),
   `note` int(50) NOT NULL,
   `niveau` int(50) NOT NULL,
   PRIMARY KEY (`idqcm`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `resultat`
@@ -269,47 +305,127 @@ INSERT INTO `resultat` (`idqcm`, `login`, `date`, `note`, `niveau`) VALUES
 (4, 'prof', '2020-03-13 12:08:06', 6, 1),
 (5, '', '2020-03-13 12:15:59', 5, 1),
 (6, 'natsu2paris@yopmail.com', '2020-03-13 12:16:15', 5, 1),
-(7, 'natsu2paris@yopmail.com', '2020-03-13 12:18:36', 5, 0);
+(7, 'natsu2paris@yopmail.com', '2020-03-13 12:18:36', 5, 0),
+(8, 'prof', '2020-09-14 22:20:30', 1, 1),
+(9, 'prof', '2020-09-14 22:21:40', 0, 1),
+(10, 'prof', '2020-10-01 23:14:27', 0, 0),
+(11, 'prof', '2020-10-01 23:15:19', 0, 0),
+(12, 'prof', '2020-10-01 23:15:24', 0, 0),
+(13, 'prof', '2020-10-01 23:15:24', 0, 0),
+(14, 'prof', '2020-10-01 23:15:25', 0, 0),
+(15, 'prof', '2020-10-01 23:15:35', 0, 0),
+(16, 'prof', '2020-10-01 23:15:46', 0, 0),
+(17, 'prof', '2020-10-01 23:15:49', 0, 0),
+(18, 'prof', '2020-10-01 23:15:55', 0, 0),
+(19, 'prof', '2020-10-01 23:16:43', 0, 0),
+(20, 'prof', '2020-10-01 23:16:43', 0, 0),
+(21, 'prof', '2020-10-01 23:16:43', 0, 0),
+(22, 'prof', '2020-10-01 23:16:43', 0, 0),
+(23, 'prof', '2020-10-01 23:16:52', 0, 0),
+(24, 'prof', '2020-10-01 23:17:04', 0, 0),
+(25, 'prof', '2020-10-01 23:17:13', 0, 0),
+(26, 'prof', '2020-10-01 23:17:19', 0, 0),
+(27, 'prof', '2020-10-01 23:17:38', 0, 0),
+(28, 'prof', '2020-10-01 23:17:46', 0, 0),
+(29, 'prof', '2020-10-01 23:17:53', 0, 0),
+(30, 'prof', '2020-10-01 23:20:16', 0, 1),
+(31, 'prof', '2020-10-01 23:20:33', 0, 1),
+(32, 'prof', '2020-10-01 23:20:37', 0, 1),
+(33, 'prof', '2020-10-01 23:20:39', 0, 1),
+(34, 'prof', '2020-10-01 23:20:59', 0, 1),
+(35, 'prof', '2020-10-01 23:24:02', 0, 1),
+(36, 'prof', '2020-10-01 23:24:18', 0, 1),
+(37, 'prof', '2020-10-01 23:24:22', 0, 1),
+(38, 'prof', '2020-10-01 23:24:33', 0, 1),
+(39, 'prof', '2020-10-01 23:24:54', 0, 1),
+(40, 'prof', '2020-10-01 23:25:01', 0, 1),
+(41, 'prof', '2020-10-01 23:26:11', 0, 1),
+(42, 'prof', '2020-10-01 23:26:52', 0, 1),
+(43, 'prof', '2020-10-01 23:27:02', 0, 1),
+(44, 'prof', '2020-10-01 23:27:07', 0, 1),
+(45, 'prof', '2020-10-01 23:27:43', 0, 1),
+(46, 'prof', '2020-10-01 23:27:47', 0, 1),
+(47, 'prof', '2020-10-01 23:27:57', 0, 1),
+(48, 'prof', '2020-10-01 23:28:31', 5, 1),
+(49, 'prof', '2020-10-01 23:29:01', 5, 1),
+(50, 'prof', '2020-10-01 23:29:09', 5, 1),
+(51, 'prof', '2020-10-01 23:29:16', 5, 1),
+(52, 'prof', '2020-10-01 23:31:49', 5, 1),
+(53, 'prof', '2020-10-01 23:31:54', 5, 1),
+(54, 'prof', '2020-10-01 23:32:14', 5, 1),
+(55, 'prof', '2020-10-01 23:32:20', 5, 1),
+(56, 'prof', '2020-10-01 23:32:32', 5, 1),
+(57, 'prof', '2020-10-01 23:32:40', 5, 1),
+(58, 'prof', '2020-10-01 23:32:46', 5, 1),
+(59, 'prof', '2020-10-01 23:32:49', 5, 1),
+(60, 'prof', '2020-10-01 23:32:54', 5, 1),
+(61, 'prof', '2020-10-01 23:34:50', 5, 1),
+(62, 'prof', '2020-10-01 23:34:57', 5, 1),
+(63, 'prof', '2020-10-01 23:35:19', 5, 1),
+(64, 'prof', '2020-10-01 23:36:20', 5, 1),
+(65, 'prof', '2020-10-01 23:36:29', 5, 1),
+(66, 'prof', '2020-10-01 23:36:46', 5, 1),
+(67, 'prof', '2020-10-01 23:37:00', 5, 1),
+(68, 'prof', '2020-10-01 23:39:08', 5, 1),
+(69, 'prof', '2020-10-01 23:39:30', 5, 1),
+(70, 'prof', '2020-10-01 23:39:36', 5, 1),
+(71, 'prof', '2020-10-01 23:39:48', 5, 1),
+(72, 'prof', '2020-10-01 23:40:02', 5, 1),
+(73, 'prof', '2020-10-01 23:40:09', 5, 1),
+(74, 'prof', '2020-10-01 23:40:18', 5, 1),
+(75, 'prof', '2020-10-01 23:40:32', 5, 1),
+(76, 'prof', '2020-10-01 23:40:39', 5, 1),
+(77, 'prof', '2020-10-01 23:41:53', 5, 1),
+(78, 'prof', '2020-10-01 23:42:34', 5, 1),
+(79, 'prof', '2020-10-01 23:43:04', 5, 1),
+(80, 'prof', '2020-10-01 23:43:12', 5, 1),
+(81, 'prof', '2020-10-01 23:43:42', 5, 1),
+(82, 'prof', '2020-10-01 23:44:02', 5, 1),
+(83, 'prof', '2020-10-01 23:45:31', 5, 1),
+(84, 'prof', '2020-10-01 23:45:39', 5, 1),
+(85, 'prof', '2020-10-01 23:45:47', 5, 1),
+(86, 'prof', '2020-10-01 23:45:52', 5, 1),
+(87, 'prof', '2020-10-01 23:46:00', 5, 1),
+(88, 'prof', '2020-10-01 23:46:19', 5, 1),
+(89, 'prof', '2020-10-01 23:46:24', 5, 1),
+(90, 'prof', '2020-10-01 23:46:33', 5, 1),
+(91, 'prof', '2020-10-01 23:46:40', 5, 1),
+(92, 'prof', '2020-10-01 23:48:41', 5, 1),
+(93, 'prof', '2020-10-01 23:48:54', 5, 1),
+(94, 'prof', '2020-10-01 23:49:12', 5, 1),
+(95, 'prof', '2020-10-01 23:49:22', 5, 1),
+(96, 'prof', '2020-10-01 23:54:42', 5, 1),
+(97, 'prof', '2020-10-01 23:55:01', 5, 1),
+(98, 'prof', '2020-10-01 23:55:07', 5, 1),
+(99, 'prof', '2020-10-01 23:55:18', 5, 1),
+(100, 'prof', '2020-10-01 23:55:36', 5, 1),
+(101, 'a@a.a', '2020-10-12 00:21:32', 0, 1),
+(102, 'a@a.a', '2020-10-12 00:22:31', 3, 1),
+(103, 'a@a.a', '2020-10-12 00:22:47', 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `resultattest`
+-- Structure de la table `to_do_list`
 --
 
-DROP TABLE IF EXISTS `resultattest`;
-CREATE TABLE IF NOT EXISTS `resultattest` (
-  `idqcm` int(50) NOT NULL AUTO_INCREMENT,
-  `login` varchar(200) NOT NULL,
-  `note` int(50) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `niveau` int(50) NOT NULL,
-  PRIMARY KEY (`idqcm`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `to_do_list`;
+CREATE TABLE IF NOT EXISTS `to_do_list` (
+  `id_tdl` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_utilisateur` int(11) NOT NULL,
+  `tache` varchar(255) NOT NULL,
+  `realiser` int(1) NOT NULL,
+  PRIMARY KEY (`id_tdl`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `resultattest`
+-- Déchargement des données de la table `to_do_list`
 --
 
-INSERT INTO `resultattest` (`idqcm`, `login`, `note`, `date`, `niveau`) VALUES
-(1, 'prof', 2, '2020-01-31 10:32:12', 0),
-(2, 'toto', 1, '2020-01-31 10:32:34', 0),
-(3, 'prof', 0, '2020-01-31 10:39:50', 0),
-(4, 'prof', 0, '2020-01-31 11:40:56', 0),
-(5, 'prof', 0, '2020-01-31 11:58:06', 0),
-(6, 'prof', 1, '2020-01-31 11:58:29', 0),
-(7, 'prof', 1, '2020-01-31 12:00:07', 0),
-(8, 'prof', 1, '2020-01-31 12:06:29', 0),
-(9, 'prof', 0, '2020-01-31 12:07:25', 0),
-(10, 'prof', 0, '2020-01-31 12:07:58', 0),
-(11, 'prof', 0, '2020-01-31 12:10:21', 0),
-(12, 'prof', 1, '2020-01-31 12:10:57', 0),
-(13, 'prof', 1, '2020-01-31 12:11:36', 0),
-(14, 'prof', 1, '2020-01-31 12:11:58', 0),
-(15, 'prof', 0, '2020-01-31 12:12:05', 0),
-(16, 'prof', 1, '2020-01-31 12:12:28', 0),
-(17, 'prof', 1, '2020-01-31 12:12:55', 0),
-(18, 'prof', 1, '2020-01-31 12:18:48', 1);
+INSERT INTO `to_do_list` (`id_tdl`, `fk_utilisateur`, `tache`, `realiser`) VALUES
+(1, 7, 'rajouter le lot des 5 fourchette blanche', 0),
+(2, 7, 'rajouter les nouvelle tables en bois', 2),
+(3, 7, 'faire l\'inventaire des stocks', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
