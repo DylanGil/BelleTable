@@ -31,7 +31,9 @@
         $('.menuclick').click(function() {
           $('.menuclick').toggleClass('active');
           $('.menuclick').toggleClass('dropright');
-          $('<?php echo $class ?>').toggleClass('desactive');
+          <?php if(isset($class)): ?>
+            $('<?php echo $class ?>').toggleClass('desactive');
+          <?php endif; ?>
         }); 
         $('.menuclick2').click(function() {
           $('.menuclick2').toggleClass('active');
@@ -73,35 +75,35 @@
                 <li class="menuclick dropright">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fad fa-analytics"></i> Statistique </a>
                     <ul class="collapse list-unstyled sous-menu" id="homeSubmenu">
-                        <li class="articles-vendu">
-                            <a href="articles-vendu.php"><i class="far fa-dollar-sign"></i> Articles vendu</a>
+                        <li>
+                            <a class="articles-vendu" href="articles-vendu.php"><i class="far fa-dollar-sign"></i> Articles vendu</a>
                         </li>
 
-                        <li class="liste-panier" style="">
-                            <a href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
+                        <li>
+                            <a class="liste-panier" href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
                         </li>
 
-                        <li class="liste-membre">
-                            <a href="liste-membre.php"><i class="fas fa-users"></i> Liste des membres inscrits</a>
+                        <li>
+                            <a class="liste-membre" href="liste-membre.php"><i class="fas fa-users"></i> Liste des membres inscrits</a>
                         </li>
 
                     </ul>
                 </li>
 
                 <li class="articles">
-                    <a href="articles.php"><i class="fas fa-paint-brush"></i> Gérer les articles </a>
+                    <a href="articles.php"><i class="fas fa-edit"></i> Gérer les articles </a>
                 </li>
                 <li class="offre">
-                    <a href="offre.php"><i class="fas fa-pencil-alt"></i> Ajouter un offre d'emploie </a>
+                    <a href="offre.php"><i class="fas fa-plus"></i> Ajouter un offre d'emploie </a>
                 </li>
                 <li class="contact">
-                    <a href="contact.php"><i class="fas fa-history"></i> Contact </a>
+                    <a href="contact.php"><i class="fas fa-ticket-alt"></i> Contact </a>
                 </li>
             </ul>
         
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="back">Retourner sur le site</a>
+                    <a href="../" class="back">Retourner sur le site</a>
                 </li>
                 <li>
                     <a href="../?infos=index.php&deconnecter=1" class="deconnexion">Se deconnecter</a>

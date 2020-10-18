@@ -35,12 +35,8 @@
                   <div class="col-lg-3 col-6">
                     <div class="info-box box1" align="center">
                       <div class="text-box">
-                        <h3>223</h3>
-
+                        <h3>223 <i class="fas fa-box"></i></h3>
                         <p>Articles</p>
-                      </div>
-                      <div class="icon-box">
-                        
                       </div>
                       <div class="info-box-footer">
                         <a href="stats/utilisateur.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
@@ -51,14 +47,14 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box2" >
                       <div class="text-box">
-                        <h3>53</h3>
+                        <h3>53 <i class="fas fa-dollar-sign"></i></h3>
                         <p>Articles vendu</p>
                       </div>
                       <div class="icon-box">
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/taux-participation.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -66,14 +62,14 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box3">
                       <div class="text-box">
-                        <h3>25</h3>
+                        <h3>25 <i class="fas fa-shopping-basket"></i></h3>
                         <p>Paniers en cours</p>
                       </div>
                       <div class="icon-box">
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/news.php">More d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -81,13 +77,13 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box4">
                       <div class="text-box">
-                        <h3>25</h3>
+                        <h3>25 <i class="fas fa-users"></i></h3>
                         <p>Utilisateurs</p>
                       </div>
                       <div class="icon-box">   
                       </div>
                       <div class="info-box-footer">
-                        <a href="stats/commentaire.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="liste-membre.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
