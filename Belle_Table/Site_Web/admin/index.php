@@ -47,7 +47,7 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box2" >
                       <div class="text-box">
-                        <h3>53 <i class="fas fa-dollar-sign"></i></h3>
+                        <h3>53 <i class="fas fa-box-usd"></i></h3>
                         <p>Articles vendu</p>
                       </div>
                       <div class="icon-box">
