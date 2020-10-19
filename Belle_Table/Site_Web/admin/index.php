@@ -77,7 +77,7 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box4">
                       <div class="text-box">
-                        <h3>25 <i class="fas fa-users"></i></h3>
+                        <h3><?php $countUtilisateur = "SELECT count(prenom) FROM login"; $reqNbUtilisateur = mysqli_query($bdd,$countUtilisateur); $nbUser = mysqli_fetch_assoc($reqNbUtilisateur); echo $nbUser['count(prenom)']; ?> <i class="fas fa-users"></i></h3>
                         <p>Utilisateurs</p>
                       </div>
                       <div class="icon-box">   
@@ -111,7 +111,8 @@
                   $requete = "INSERT INTO to_do_list(fk_utilisateur, tache, realiser) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$tache', 0)";
                   mysqli_query($bdd, $requete);
                 } 
-              $afficherTache = "SELECT id_tdl, prenom, tache, realiser FROM login, to_do_list WHERE fk_utilisateur = id ORDER BY id_tdl ASC" ;
+
+              $afficherTache = "SELECT id_tdl, prenom, tache, realiser FROM login, to_do_list WHERE fk_utilisateur = id ORDER BY realiser ASC" ;
               $resAfficherTache = mysqli_query($bdd, $afficherTache);
               if(isset($_GET['realiser']))
               {
@@ -198,6 +199,17 @@
               <div class="to-do-list">
                 <table class="tdl" border="1">
                   <tr>
+                    <th colspan="4" style="background-color: white;">
+                      <center>
+                        <h6>
+                          <i class="far fa-play"></i> = a faire |
+                          <i class="far fa-clock"></i> = en cours |
+                          <i class="far fa-check"></i> = fini
+                        </h6>
+                      </center>
+                    </th>
+                  </tr>
+                  <tr>
                     <th colspan="4" class="to-do-list-header">
                       <center><h6>TO-DO-LIST</h6></center>
                     </th>
@@ -210,23 +222,24 @@
                   </tr>
 
                   <?php while($tache = mysqli_fetch_assoc($resAfficherTache)): ?> 
-                    <?php $idtdl = $tache['id_tdl']; ?>
-
+                    <?php $idtdl = $tache['id_tdl'];  
+                          if($tache['realiser']==0){$a = "fe2d08"; } 
+                          if($tache['realiser']==1){$a = "ff891d"; }
+                          if($tache['realiser']==2){$a = "0ede28"; }  
+                    ?>
                     <tr align="center">
-                      <td style="text-align: center;">
-                        <a href="?realiser=a faire&id=<?php echo $idtdl ?>">a faire <i class="far fa-play"></i></a>
-                        <br>
-                        <a href="?realiser=en cours&id=<?php echo $idtdl ?>">en cours <i class="far fa-clock"></i></a>
-                        <br>
-                        <a href="?realiser=fini&id=<?php echo $idtdl ?>">fini <i class="far fa-check"></i></a>
+                      <td style="text-align: center; ">
+                        <a href="?realiser=a faire&id=<?php echo $idtdl ?>"><i class="far fa-play"></i></a>
+                        <a href="?realiser=en cours&id=<?php echo $idtdl ?>"><i class="far fa-clock"></i></a>
+                        <a href="?realiser=fini&id=<?php echo $idtdl ?>"><i class="far fa-check"></i></a>
                       </td>
                       <td><?php echo $tache['prenom']; ?></td>
                       <td><?php echo $tache['tache']; ?></td>
-                      <td>
+                      <td style="background-color: #<?php echo $a; ?>">
                         <?php 
                           if($tache['realiser']==0){echo "A FAIRE";} 
-                          if($tache['realiser']==1){echo "EN COURS";}
-                          if($tache['realiser']==2){echo "FINI";} 
+                          if($tache['realiser']==1){echo "EN COURS"; }
+                          if($tache['realiser']==2){echo "FINI"; } 
                         ?>
                       </td>
                     </tr>

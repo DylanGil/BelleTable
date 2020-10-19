@@ -181,7 +181,7 @@
                           <td><?php echo $userInfo['prenom']; ?></td>
                           <td><?php echo $userInfo['email']; ?></td>
                           <td><?php echo $userInfo['telephone']; ?></td>
-                          <td><?php if($userInfo['admin']==0){echo "Utilisateur" ; } else{echo "admin" ;} ?></td>
+                          <td><?php if($userInfo['admin']==0){echo "Utilisateur" ; } else{echo "Admin" ;} ?></td>
                           <td>
                             <a class="btn btn-primary" href="?id=<?=$userInfo["id"]?>" >Modifier</a>
                             <a class="btn btn-danger" href="?id=<?=$userInfo["id"]?>&supprimer=1">Supprimer</a> 
