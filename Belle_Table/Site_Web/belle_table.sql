@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 18 oct. 2020 à 02:44
+-- Généré le :  ven. 23 oct. 2020 à 12:55
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -25,6 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(120) NOT NULL,
+  `prenom` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `sujet` varchar(120) NOT NULL,
+  `message` text NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `etat` varchar(120) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `contact`
+--
+
+INSERT INTO `contact` (`id`, `nom`, `prenom`, `email`, `sujet`, `message`, `date_creation`, `etat`) VALUES
+(1, 'Dupont', 'Jean', 'jeandupont@gmail.com', 'Cherche emploie', 'Bonjour je suis a la recherche d\'un emploie pour une alternance pour la rentree 2021-2022', '2020-10-20 14:41:34', 'Repondu'),
+(2, 'Rodriguez', 'Michel', 'michelrodiguez@gmail.com', 'Remboursement', 'Bonjour je souhaiterais obtenir un remboursement ou un avoir car je ne suis pas satisfait de mes produits !', '2020-10-22 23:14:21', 'Nouveau');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `login`
 --
 
@@ -38,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   `email` varchar(255) DEFAULT NULL,
   `admin` int(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `login`
@@ -46,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 
 INSERT INTO `login` (`id`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`) VALUES
 (1, 'admin', 'admin', 651206977, 'admin', 'natsu2paris@yopmail.com', 1),
-(5, 'test', 'test', 651206977, 'test', 'qwerty@gmail.com', 0),
+(5, 'test', 'test', 651206977, 'test', 'a@a.a', 0),
 (7, 'Partouche', 'Nathan', 606060606, 'nathan', 'nathanpartouche@hotmail.fr', 1);
 
 -- --------------------------------------------------------
@@ -61,16 +88,15 @@ CREATE TABLE IF NOT EXISTS `message` (
   `fk_utilisateur` int(11) NOT NULL,
   `message` varchar(255) NOT NULL,
   PRIMARY KEY (`id_message`)
-) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `message`
 --
 
 INSERT INTO `message` (`id_message`, `fk_utilisateur`, `message`) VALUES
-(69, 5, 'oh cool  sa marche'),
-(65, 7, 'salut !'),
-(70, 1, 'oh cool  sa marche');
+(65, 7, 'salut j\'ai rajouter des nouveau truc dans la to do list'),
+(70, 1, 'sa marche je vais voir ;)');
 
 -- --------------------------------------------------------
 
@@ -281,6 +307,30 @@ INSERT INTO `reponse` (`idr`, `idq`, `reponse`, `verif`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `reponse_contact`
+--
+
+DROP TABLE IF EXISTS `reponse_contact`;
+CREATE TABLE IF NOT EXISTS `reponse_contact` (
+  `id_rep` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_contact` int(11) DEFAULT NULL,
+  `nom` varchar(120) NOT NULL,
+  `prenom` varchar(120) NOT NULL,
+  `message` text NOT NULL,
+  `date_rep` datetime NOT NULL,
+  PRIMARY KEY (`id_rep`)
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `reponse_contact`
+--
+
+INSERT INTO `reponse_contact` (`id_rep`, `fk_contact`, `nom`, `prenom`, `message`, `date_rep`) VALUES
+(46, 1, 'Partouche', 'Nathan', 'bonjour, nous somme dÃ©soler mais nous ne recrutons pas d\'alternant.\r\n\r\nCordialement', '2020-10-22 23:06:38');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `resultat`
 --
 
@@ -416,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `to_do_list` (
   `tache` varchar(255) NOT NULL,
   `realiser` int(1) NOT NULL,
   PRIMARY KEY (`id_tdl`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `to_do_list`
@@ -425,7 +475,8 @@ CREATE TABLE IF NOT EXISTS `to_do_list` (
 INSERT INTO `to_do_list` (`id_tdl`, `fk_utilisateur`, `tache`, `realiser`) VALUES
 (1, 7, 'rajouter le lot des 5 fourchette blanche', 0),
 (2, 7, 'rajouter les nouvelle tables en bois', 2),
-(3, 7, 'faire l\'inventaire des stocks', 1);
+(3, 7, 'faire l\'inventaire des stocks', 1),
+(9, 7, 'gÃ©rer les deux candidatures pour l\'offre d\'emploie nÂ°35', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
