@@ -337,6 +337,7 @@ textarea {padding: 10px;
 	border: 2px solid #02b8dd;
 
 }
+
 .line{border-top: 2px solid #F2F2F2;}
 .contacter label {color: white;}
 .section-contact {background-color: #343A40; padding: 15px;}
@@ -358,6 +359,9 @@ textarea {padding: 10px;
 .inscription-form2 {display: flex; flex-direction: column; width: 255px;}
 .connexion {color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px;}
 .connexion:hover {color: white; background-color: #ff7a00;}
+.connexion-submit{color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px; font-size: 14.5px;}
+.error {color: red !important ;}
+.error-msg{color: white; background-color: orange; padding: 10px; border-radius: 12px;}
 /* FOOTER */
 
 footer
