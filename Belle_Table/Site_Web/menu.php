@@ -17,6 +17,8 @@
 	.ulsm li a {color: white;}
 </style>
 
+<?php $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
+
 <header>
 	<div class="wrapper Header" >
 		<h1>Belle Table<span class="orange">.</span></h1>

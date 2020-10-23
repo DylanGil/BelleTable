@@ -360,6 +360,8 @@ textarea {padding: 10px;
 .connexion {color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px;}
 .connexion:hover {color: white; background-color: #ff7a00;}
 .connexion-submit{color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px; font-size: 14.5px;}
+.error {color: red !important ;}
+.error-msg{color: white; background-color: orange; padding: 10px; border-radius: 12px;}
 /* FOOTER */
 
 footer

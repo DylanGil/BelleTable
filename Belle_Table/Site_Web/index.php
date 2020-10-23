@@ -44,35 +44,77 @@
 			<div class="clear"></div>
 		</div>
 	</section>
+		<?php 
+			$error =array() ;
+			if(!empty($_POST))/* si les valeur dans les champ ne son pas remplie ALORS crée la variable erreur */
+			{	
+				if(empty($_POST['nom'])) $error[]='nom' ;
+				if(empty($_POST['prenom'])) $error[]='prenom' ;
+				if(empty($_POST['email'])) $error[]='email' ;
+				if(!empty($_POST['email']))
+				{
+					if(!preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " , $_POST['email'])) $errorMail='désolé l\'email que vous nous avez fournis n\'est pas valide merci de respecter le format exemple@exemple.com';
+				}
+				if(empty($_POST['sdld'])) $error[]='sujet de la demande' ;
+				if(empty($_POST['message'])) $error[]='message' ;	
+				if(empty($error)) /* si la variable error et vide alors afficher ce code */ 
+				{
+					$prenom = $_POST['prenom'];
+					$nom = $_POST['nom'];
+					$email = $_POST['email'];
+					$sujet = $_POST['sdld'];
+					$message = $_POST['message'];
+					
+					$reqContact = "INSERT INTO contact(nom, prenom, email, sujet, message, date_creation, etat) VALUES ('{$nom}' , '{$prenom}', '{$email}', '{$sujet}' , '{$message}' , now(), 'Nouveau'); " ;
+					mysqli_query($bdd, $reqContact);
+
+
+				}
+			}
+		?>
+
 	<section>
 		<div class="section-contact">
 			<h3 class="h3contact">Contacter nous</h3>
 
 			<form class="contacter" action="" method="POST">
-
+				<?php if(!empty($error)): ?>
+					<span class="error-msg">
+						Vous n'avez pas remplie les champs en rouge!
+					</span><br><br>
+				<?php endif; ?>
 				<div class="form-contact">
 					<div class="prenom-nom">
 						<div class="prenom">
-							<label for="prenom">Prénom</label>
+							<label for="prenom" <?php if(in_array('prenom' , @$error)): ?> class="error" <?php endif; ?> >Prénom</label>
 							<input type="text" placeholder="prenom" name="prenom" id="prenom">
 						</div>
 						<div class="nom">
-							<label for="nom">Nom</label>
+							<label for="nom" <?php if(in_array('nom' , @$error)): ?> class="error" <?php endif; ?>>Nom</label>
 							<input type="text" placeholder="nom" name="nom" id="nom">
+						</div>
+					</div>
+
+					<div class="b-email" >
+						<div class="email">
+							<label for="email" <?php if(in_array('email' , @$error)): ?> class="error" <?php endif; ?>>Adresse Email</label>
+							<input style="border-radius: 0px; border-color: gray;" type="email" placeholder="Adresse email" name="email" id="email">
+							<?php if(isset($errorMail)): ?> 
+								<span class="error-msg" style="position: relative; right: 9px; top: 10px;"> <?php echo $errorMail; ?></span> 
+							<?php endif; ?>
 						</div>
 					</div>
 
 					<div class="b-email">
 						<div class="email">
-							<label for="email">Adresse Email</label>
-							<input style="border-radius: 0px; border-color: gray;" type="email" placeholder="Adresse email" name="email" id="email">
+							<label for="sdld" <?php if(in_array('sujet de la demande' , @$error)): ?> class="error" <?php endif; ?>>Sujet de la demande</label>
+							<input style="border-radius: 0px; border-color: gray;" type="text" placeholder="Sujet de la demande" name="sdld" id="sdld">
 						</div>
 					</div>
-
 					<div class="b-message">
 						<div class="message">
-							<label for="message">Message</label>
-							<textarea cols="47" rows="4" style="font-family: arial;" id="message" placeholder="Ecriver votre message..."></textarea>
+							<label for="message" <?php if(in_array('message' , @$error)): ?> class="error" <?php endif; ?>>Message</label>
+							<textarea cols="47" rows="4" style="font-family: arial;" name="message" id="message" placeholder="Ecriver votre message..."></textarea>
 						</div>
 					</div>
 

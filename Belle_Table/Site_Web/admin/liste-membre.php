@@ -150,7 +150,6 @@
                     <option value="prenom"> prenom </option>
                     <option value="email"> email </option>
                     <option value="telephone"> telephone </option>
-                    <option value="rang"> rang </option>
                   </select>
                   <select name="tri" class="custom-select" style="width: 140px;">
                     <option value="ASC">Croissant</option>
@@ -162,8 +161,9 @@
             <?php endif; ?>
              <!-- la page principal -->
              <?php if(@$modifier==false): ?> <!-- ligne la plus importante, si la variable modifier = false alors afficher ce tableau -->
-                <div class="table-resposive">
-                  <table class="table table-hover table-striped table-bordered table-sm-responsive">
+
+                <div class="table-responsive">
+                  <table class="table table-hover table-striped table-bordered table-">
                     <thead>
                       <tr>
                         <th>Nom</th>
@@ -220,7 +220,7 @@
                 <input type="text" class="form-control" name="telephone" id="tel" value="<?=$telephone;?>" required>
                 <br>
                 <label for="rang">rang : </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                <select name="admin" id="rang" class="form-control"> 
+                <select name="admin" id="rang" class="custom-select">
                   <?php  
                       $req = "SELECT DISTINCT admin FROM login ORDER BY admin" ;
                       $res = mysqli_query($bdd,$req);
@@ -238,7 +238,7 @@
                       } 
                   ?>
                 </select>
-                <br>
+                <br><br>
                 
                 <a href="liste-membre.php"><input type="button" class="btn btn-warning" style="color: white;"  value="Annuler"></a>
 
