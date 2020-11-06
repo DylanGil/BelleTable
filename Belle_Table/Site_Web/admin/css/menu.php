@@ -47,10 +47,10 @@
     });
 </script>
 
-<?php $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
+<?php @session_start(); $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
 
 <style type="text/css">.desactive {background-color: inherit;}</style> <!-- permet de enlever la couleur de la page active lorsqu'on active un sous menu !-->
-<?php include("../inscriptionPHP.php"); ?>
+
 <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
