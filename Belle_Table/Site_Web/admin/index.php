@@ -113,7 +113,8 @@
               if(isset($_GET['realiser']))
               {
                 $id = $_GET['id'];
-                $url = "/cerfal/1erPPE/BelleTable/Belle_Table/Site_Web/admin/index.php";
+
+                $url = "index.php";
                 if($_GET['realiser']=="a faire")
                 {
                   $modifStatus = "UPDATE to_do_list SET realiser = 0 WHERE id_tdl = $id ";

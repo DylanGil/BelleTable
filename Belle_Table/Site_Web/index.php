@@ -9,7 +9,7 @@
 	<title>Belle Table</title>
 
 </head>
-
+<?php die("test"); ?>
 <center>
 <body>
 	<?php include("menu.php"); ?>

@@ -47,14 +47,24 @@
                 $requete = mysqli_query($bdd, $req); 
                 $filtre = true ;
               }
+
+            if (isset($_POST["monBoutonModif"]))
+              {
+                $newEtat = $_POST["etat"];   
+                $id = $_GET['id'];
+                $req = "UPDATE contact SET etat = '$newEtat' WHERE id = '$id' ";
+                $requete = mysqli_query($bdd, $req); 
+                $modif = true;
+              }
           ?>
 
           <center>
             <h2> <!-- modifie l'en tête en fonction de l'action faite !-->
               <?php if(@$filtre): ?>
-                Recherche <?php if($critere=="email" || $critere == "etat"): ?> de l'<?php else: ?> du <?php endif; ?><?php echo $critere ?>
-              <?php endif; ?>
-              <?php if(!@$filtre): ?>
+                Recherche <?php if($critere=="email" || $critere == "etat"): ?> de l'<?php else: ?> du <?php endif; ?><?php echo $critere ; ?>
+              <?php elseif(@$_GET['etat']): ?>
+                Modification de l'etat
+              <?php else: ?>
                 Demande de contact
               <?php endif; ?>
             </h2>
@@ -119,7 +129,7 @@
                           <style type="text/css">.dropdown-item:hover{background-color: #F2F2F2;}</style>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="afficher-contact.php?id=<?= $userInfo['id']; ?>" style=""><i class="far fa-eye"></i> Voir</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i>Modifier l'état</a>
+                            <a class="dropdown-item" href="?etat=<?php echo $userInfo['etat']; ?>&id=<?php echo $userInfo['id']; ?>"><i class="fas fa-edit"></i>Modifier l'état</a>
                           </div>
                         </div>  
                       </td> 
@@ -129,16 +139,51 @@
               </table>
             </div>
           <?php else: ?>
+            <?php 
+              $etat = $_GET['etat']; 
+              $nouveau = "Nouveau";
+              $repondu = "Repondu";
+              $fermer = "Fermé";
+            ?>
             <br>
             <center>
               <form action="" method="post">
-                <select name="etat" class="custom-select" style="width: 140px;">
-                  <option value="Nouveau">Nouveau</option>
-                  <option value="Repondu">Repondu</option>
-                  <option value="Fermé">Fermé</option>
+                <select name="etat" class="custom-select changeEtat" style="width: 140px;">
+                  <?php if ($nouveau==$etat): ?>
+                    <option value="Nouveau" selected="">Nouveau</option>
+                    <option value="Repondu">Repondu</option>
+                    <option value="Fermé">Fermé</option>
+                  <?php elseif($repondu==$etat): ?>
+                    <option value="Nouveau">Nouveau</option>
+                    <option value="Repondu" selected="">Repondu</option>
+                    <option value="Fermé">Fermé</option>
+                  <?php elseif($fermer==$etat): ?>
+                    <option value="Nouveau">Nouveau</option>
+                    <option value="Repondu">Repondu</option>
+                    <option value="Fermé" selected="">Fermé</option>
+                  <?php else: ?>
+                    </select>
+                    <?php $erreurGet = true; ?>
+                    <style type="text/css">.changeEtat{display: none;}</style>
+                    <div class="card card-body" style="width: 320px;">Désolé une erreur est survenue</div>
+                    <br>
+                  <?php endif; ?>
                 </select>
-                <input type="submit" class="btn btn-info" value="Filtrer" name="monBoutonTri"> <br><br><br>
+                <?php if(!isset($erreurGet)): ?>
+                  <input type="submit" class="btn btn-info" value="Modifier" name="monBoutonModif">
+                  <br><br><br>
+                <?php endif; ?>
               </form> 
+            </center>
+          <?php endif; ?>
+
+          <?php if(@$modif): ?>
+            <center>
+              <span class="alert alert-success">L'etat a bien étais modifié en 
+                <strong><?php echo $newEtat; ?></strong>
+              </span>
+              <br><br>
+              <a href="contact.php" class="btn btn-success">Revenir a l'accueil</a>
             </center>
           <?php endif; ?>
 

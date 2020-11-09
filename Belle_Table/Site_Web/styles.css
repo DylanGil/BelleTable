@@ -362,6 +362,120 @@ textarea {padding: 10px;
 .connexion-submit{color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px; font-size: 14.5px;}
 .error {color: red !important ;}
 .error-msg{color: white; background-color: orange; padding: 10px; border-radius: 12px;}
+
+/* PARAMETRE */ 
+.bold {font-weight: bold;}
+.settings-box 
+    { 
+        border : 1px solid gray; 
+        width: 500px;
+        margin: auto;
+        position: relative;
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        border-radius: 4px;
+        word-break: break-word;
+    }
+
+    /************************************/
+    
+@media screen and (max-device-width: 800px) 
+{
+
+.settings-box 
+
+    { 
+        border : 1px solid gray; 
+        width: 80%;
+        margin: auto;
+        position: relative;
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        border-radius: 4px;
+        word-break: break-word;
+    }
+}
+
+
+ /************************************/
+
+.titre-settings 
+    {
+        font-weight: bold;
+        background-color: #F5F6F7;
+        font-family: "Times New Romans", sans-serif;
+        border-radius: 4px;
+        padding: 12px 15px;
+    }
+.section-settings 
+    {
+        padding: 12px 15px;
+        background-color: white;
+       	
+    }
+
+.ligne-settings 
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0px;
+        padding: 10px;
+    }
+
+@media screen and (max-device-width: 800px) 
+    {
+        .ligne-settings 
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    
+.ligne-settings:hover 
+    {
+        background-color: #F5F6F7;
+    }
+
+.hide {display : none;}
+
+.form-modifier 
+    {
+        background-color: #F5F7F7; 
+       
+        margin: -10px 0px 0px 0px;
+        width: 100%;
+    }
+
+.erreur-form 
+{
+    color: red;
+}
+
+.modifier 
+{
+    width: 80%;
+}
+
+
+.succes-message 
+{
+    color: green;
+    background-color: #7bf765;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid green;
+    width: 500px;
+    position: relative;
+    top: 20px;
+}
+
+.annonce {position: relative;
+    top: 10px;}
+/* ---- */
 /* FOOTER */
 
 footer

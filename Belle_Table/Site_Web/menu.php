@@ -44,7 +44,8 @@
 					<div class="sous-menu">
 						<ul class="ulsm">
 							<li>
-								<a  style="color: white;" href="#">Mon Profil</a>
+								<a  style="color: white;" href="profil.php
+								">Mon Profil</a>
 							</li>
 
 							<?php if ($_SESSION['admin']==1): ?> 
