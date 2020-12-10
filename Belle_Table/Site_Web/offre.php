@@ -1,16 +1,22 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start(); ?>
-	<?php $page = "offre.php"; ?>
+
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Belle Table</title>
+
+	<?php 
+		require_once('include/en-tete.php');
+		$page = "offre.php"; 
+	?>
+
 </head>
 <body>
 	<center>
-		<?php include("menu.php"); ?>
+		<?php include("include/menu.php"); ?>
 
 		<section id="possibilities">
 			<?php
@@ -22,16 +28,23 @@
 			{
 				$login = $_SESSION['email'];
 				if (!isset($_POST["boutlvl"])) 
-				{ 	?>
+				{ 	
+					if ($_SESSION['noteqcm'] != null): //AFFICHE LE QCM SEULEMENT SI IL A PAS DE NOTE
+						header("location:emploi.php");
+					endif;
+					?>
 					<form method="post" action="offre.php">
 						<b> Choisir votre difficulté:</b> 
 						<br><br>
-						<label for="debutant">Debutant</label>
+						<label for="debutant">Debutant (1 point)</label>
 						<input type="radio" name="niveau" id="debutant" value="0"><br>
-						<label for="expert">Expert</label>
+						<label for="expert">Expert (2 points)</label>
 						<input type="radio" name="niveau" value="1" id="expert" checked><br><br>
 						<input type="submit" value="Choisir" name="boutlvl">
-					</form>		
+					</form>	
+					<?php if ($_SESSION['admin']==1): ?> 	
+					<a href="emploi.php" class="button-1">Nos emplois</a> <!--A ENLEVER C POUR DEV, sa permet d'acceder directement aux emplois-->
+					<?php endif; ?>
 					<?php
 				} 	?>
 
@@ -46,10 +59,9 @@
 
 						$niveau = $_POST['niveau'];
 						$_SESSION['niveau'] = $niveau;
-						$id = mysqli_connect ("localhost", "root", "","belle_table");
-						mysqli_query($id,"SET NAMES 'utf8'");
+						mysqli_query($bdd,"SET NAMES 'utf8'");
 						$req = "select * from question where niveau = $niveau ORDER BY RAND() limit 10";
-						$res = mysqli_query($id, $req); 
+						$res = mysqli_query($bdd, $req); 
 
 						while($ligne = mysqli_fetch_assoc($res))
 						{
@@ -59,9 +71,8 @@
 							?>
 							 <br><br><br>
 							<?php
-									$id = mysqli_connect ("localhost", "root", "","belle_table");
 									$req2 = "select * from reponse where idq = ".$ligne["id"]." ORDER BY RAND()";
-									$res2 = mysqli_query($id, $req2);
+									$res2 = mysqli_query($bdd, $req2);
 
 							while($ligne2 = mysqli_fetch_assoc($res2))
 							{ 
@@ -78,7 +89,7 @@
 				<?php 
 			} 	?>
 		</section>
-		<?php include("footer.php"); ?>
+		<?php include("include/footer.php"); ?>
 	</center>
 </body>
 </html>

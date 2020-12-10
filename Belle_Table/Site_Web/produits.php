@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Annonce</title>
+	<?php 
+		require_once('include/en-tete.php');
+		$page = "produits.php";
+		$email = $_SESSION["email"];
+	?>
 </head>
 <body>
 <center>
-	<?php session_start();
-	$page = "produits.php";
-	include("menu.php");
-	$email = $_SESSION["email"];
-	?>
+	<?php include("include/menu.php"); ?>
 	<section id="possibilities">
 <h1>Nos Produits</h1>
 <!-- Ici c pour la recherche du medecins specialité ou service, le tableau apparait que lorsque le bouton est appuyer -->
@@ -53,9 +55,8 @@
 		$critere = $_POST["filtreSearch"];;		
 		$search =$_POST["search"];
 		$tri =$_POST["tri"];
-		$id = mysqli_connect ("localhost", "root", "","favoris");
 		$req = "select * from annonce where $critere like '%$search%' order by titre $tri";
-		$res = mysqli_query($id, $req); 
+		$res = mysqli_query($bdd, $req); 
 		$i = 0;
 while($ligne = mysqli_fetch_assoc($res)){
 ?>
@@ -63,7 +64,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 	<td><?=$ligne["titre"]; ?></td>
 	<td><?=$ligne["prix"]; ?></td>
 	<td><?=$ligne["description"]; ?></td>
-	<td><img src="<?=$ligne["image"]; ?>" height="100px"	width="100px"></td>  
+	<td><img src="<?=$ligne["image"]; ?>" height="100px" width="100px"></td>  
 	<td><select name = "quantiteSelect">
 		<option value = "un" selected>1
 		<option value = "deux">2
@@ -96,9 +97,8 @@ echo"</table>";
 	</tr>
 
 <?php 
-$id = mysqli_connect ("localhost", "root", "","favoris");
 		$req = "SELECT * FROM `annonce` ORDER BY titre ASC";
-$res = mysqli_query($id,$req);
+$res = mysqli_query($bdd,$req);
 $i = 0;
 while($ligne = mysqli_fetch_assoc($res)){
 ?>
@@ -106,7 +106,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 	<td><?=$ligne["titre"]; ?></td>
 	<td><?=$ligne["prix"]; ?></td>
 	<td><?=$ligne["description"]; ?></td> 
-	<td><img src="<?=$ligne["image"]; ?>" height="100px"	width="100px"></td>
+	<td><img src="<?=$ligne["image"]; ?>" height="100px" width="100px"></td>
 	<td><select name = "quantiteSelect">
 		<option value = "un" selected>1
 		<option value = "deux">2

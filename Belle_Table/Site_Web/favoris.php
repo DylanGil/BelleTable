@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,13 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Panier</title>
+	<?php 
+		require_once('include/en-tete.php');
+		$page = "favoris.php"; 
+		@$email = $_SESSION["email"] ;
+	?>
 </head>
 <body>
 <center>
-	<?php session_start();
-	$email = $_SESSION["email"] ;
-	include("menu.php");
-	?>
+	<?php include("include/menu.php"); ?>
 	<section id="possibilities">
 <h1>Mon Panier</h1>
 
@@ -28,9 +31,8 @@
 	</tr>
 
 	<?php
-		$id = mysqli_connect ("localhost", "root", "","favoris");
 		$req = "select * from favoriss where iduser = '$email'";
-		$res = mysqli_query($id, $req); 
+		$res = mysqli_query($bdd, $req); 
 		$i = 0;
 while($ligne = mysqli_fetch_assoc($res)){
 ?>

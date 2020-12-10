@@ -354,14 +354,127 @@ textarea {padding: 10px;
 .b-submit {display: flex; flex-direction: row;}
 .submit {display: flex; flex-direction: column;}
 .divsm {display: flex; flex-direction: column; align-items: flex-end;}
-.inscriptionform1 {display: flex; flex-direction: row; justify-content: space-around; width: 255px;}
-.inscription-form1 {display: flex; flex-direction: column; width: 255px;}
-.inscription-form2 {display: flex; flex-direction: column; width: 255px;}
+.inscription-form {display: flex; flex-direction: row; justify-content: space-around; width: 255px;}
+.inscription-form-col {display: flex; flex-direction: column; width: 255px;}
 .connexion {color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px;}
 .connexion:hover {color: white; background-color: #ff7a00;}
 .connexion-submit{color: #ff7a00; background-color: white; border: 2px solid #ff7a00; padding: 6px 20px; border-radius: 3px; font-size: 14.5px;}
 .error {color: red !important ;}
 .error-msg{color: white; background-color: orange; padding: 10px; border-radius: 12px;}
+
+/* PARAMETRE */ 
+.bold {font-weight: bold;}
+.settings-box 
+    { 
+        border : 1px solid gray; 
+        width: 500px;
+        margin: auto;
+        position: relative;
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        border-radius: 4px;
+        word-break: break-word;
+    }
+
+    /************************************/
+    
+@media screen and (max-device-width: 800px) 
+{
+
+.settings-box 
+
+    { 
+        border : 1px solid gray; 
+        width: 80%;
+        margin: auto;
+        position: relative;
+        margin-top: 50px; 
+        margin-bottom: 50px;
+        border-radius: 4px;
+        word-break: break-word;
+    }
+}
+
+
+ /************************************/
+
+.titre-settings 
+    {
+        font-weight: bold;
+        background-color: #F5F6F7;
+        font-family: "Times New Romans", sans-serif;
+        border-radius: 4px;
+        padding: 12px 15px;
+    }
+.section-settings 
+    {
+        padding: 12px 15px;
+        background-color: white;
+       	
+    }
+
+.ligne-settings 
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0px;
+        padding: 10px;
+    }
+
+@media screen and (max-device-width: 800px) 
+    {
+        .ligne-settings 
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    
+.ligne-settings:hover 
+    {
+        background-color: #F5F6F7;
+    }
+
+.hide {display : none;}
+
+.form-modifier 
+    {
+        background-color: #F5F7F7; 
+       
+        margin: -10px 0px 0px 0px;
+        width: 100%;
+    }
+
+.erreur-form 
+{
+    color: red;
+}
+
+.modifier 
+{
+    width: 80%;
+}
+
+
+.succes-message 
+{
+    color: green;
+    background-color: #7bf765;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid green;
+    width: 500px;
+    position: relative;
+    top: 20px;
+}
+
+.annonce {position: relative;
+    top: 10px;}
+/* ---- */
 /* FOOTER */
 
 footer
@@ -382,4 +495,130 @@ footer h1
 	font-weight: bold;
 	padding-top: 30px;
 	color: #777;
+}
+.msg-bvn 
+{
+	float: left; 
+	font-weight: bold;
+	font-size: 20px;
+}
+.column 
+{
+	display: flex;
+	flex-direction: column;
+}
+.content-box
+{ 
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 30px;
+}
+
+.box {width: 200px;}
+
+.header-box 
+{
+	background-color: #FF7A00;
+	color: white;
+	font-weight: bold;
+	border-radius: 12px;	
+	padding: 10px;
+	border: 2px solid #FF7A00;
+}
+
+.header-box:hover
+{
+	background-color: white;
+	border: 2px solid #FF7A00;
+	color: #FF7A00;
+}
+
+.round 
+{
+	border-radius: 12px 12px 0px 0px;
+}
+.body-box
+{
+	background-color: white;
+	overflow: auto;	
+	padding: 10px 0;
+}
+
+.height-box 
+{
+	max-height: 120px;
+}
+
+.settings-btn
+{	display: block;
+	width: 200px;
+	padding: 10px;
+	background-color: #FF7A00;
+	color: white;
+	font-weight: bold;
+	border-radius: 12px;
+	border: 2px solid #FF7A00;
+}
+
+.settings-btn:hover
+{
+	background-color: white;
+	border: 2px solid #FF7A00;
+	color: #FF7A00;
+}
+
+.btn-modifier
+{	
+	display: inline-block;
+	margin: 10px 0px;
+	padding: 10px;
+	background-color: #FF7A00;
+	color: white;
+	font-weight: bold;
+	border-radius: 12px;
+	border: 2px solid #FF7A00;
+}
+
+.btn-modifier:hover
+{
+	background-color: white;
+	border: 2px solid #FF7A00;
+	color: #FF7A00;
+}
+button[value="annuler"]
+{
+	display: inline-block;
+	padding: 10px;
+	background-color: #FF7A00;
+	color: white;
+	font-weight: bold;
+	border-radius: 12px;
+	border: 2px solid #FF7A00;
+}
+
+button[value="annuler"]:hover
+{
+	background-color: white;
+	border: 2px solid #FF7A00;
+	color: #FF7A00;
+}
+
+.btn-admin
+{
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	border-radius: 12px;
+	border: 2px solid red;
+}
+
+.btn-admin:hover
+{
+	background-color: white;
+	color: red;
+	font-weight: bold;
+	padding: 10px;
+	border-radius: 12px;
+	border: 2px solid red;
 }

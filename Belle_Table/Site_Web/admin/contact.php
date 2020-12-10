@@ -2,14 +2,21 @@
 <html>
 
 <head>
-    <title>Panel Admin V.3</title>   
+    <title>Liste des membres inscrit</title>   
 
-<style type="text/css">.contact {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
-<?php $class = ".contact" ; ?>
+    <style type="text/css">.contact {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
+    
+    <?php 
+
+      $class = ".contact";
+
+      require_once("include/en-tete.php");
+      
+    ?>
 </head>
 <body>
 
-    <?php include("css/menu.php"); ?>
+    <?php include("include/menu.php"); ?>
         <!-- Page Content  -->
         <div id="content">
 
@@ -197,7 +204,7 @@
           <h2>Lorem Ipsum Dolor</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-          <?php include("css/footer.php"); ?>
+          <?php include("include/footer.php"); ?>
     </div>
 </body>
 

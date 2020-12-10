@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,11 +6,10 @@
 	<title>FormulaireSpecialte</title>
 </head>
 <body>
-<center>
-
-	
+<?php include('include/en-tete.php'); ?>
+<center>	
 	<?php 
-	 session_start();
+	
 	$email = $_SESSION["email"] ;
 	$idannonce =$_GET["idannonce"];
 	$titre =$_GET["titre"];
@@ -19,9 +19,8 @@
 	//$quantite = $_GET["quantite"];
 
 
-$id = mysqli_connect ("localhost", "root", "","favoris"); 
 $req = "INSERT INTO `favoriss`(`idannonce`, `iduser`, `titre`, `prix`, `description`, `image`) VALUES ($idannonce,'$email','$titre',$prix,'$description','$image')";
-$res = mysqli_query($id,$req); 
+$res = mysqli_query($bdd,$req); 
 header("location:favoris.php");
 ?>
 

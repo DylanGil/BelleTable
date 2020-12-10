@@ -1,24 +1,3 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('.compte').click(function() {
-      $('.sous-menu').toggleClass('visible');
-    });
-  });
- </script>
-
-<style type="text/css"> 
-	.sous-menu {display: none; z-index: 999; position: relative; left: 12px;} 
-	.visible {display: flex; justify-content: flex-end;} 
-	.sous-menu li {padding: 7px 0; margin-left: 10px; text-align: left;}
-	.sous-menu li:hover {background-color: red;}
-	.ulsm {background: #ff7a00; display: flex; flex-direction: column; border-radius: 12px;}
-	.ulsm li a {color: white;}
-</style>
-
-<?php $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
-
 <header>
 	<div class="wrapper Header" >
 		<h1>Belle Table<span class="orange">.</span></h1>
@@ -44,7 +23,8 @@
 					<div class="sous-menu">
 						<ul class="ulsm">
 							<li>
-								<a  style="color: white;" href="#">Mon Profil</a>
+								<a  style="color: white;" href="profil.php
+								">Mon Profil</a>
 							</li>
 
 							<?php if ($_SESSION['admin']==1): ?> 

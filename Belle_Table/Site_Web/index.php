@@ -1,18 +1,19 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start(); ?>
-	<?php $page = "index.php"; ?>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Belle Table</title>
-
+	<?php 
+		$page = "index.php"; 
+		require_once('include/en-tete.php');
+	?>
 </head>
 
-<center>
 <body>
-	<?php include("menu.php"); ?>
+	<?php include("include/menu.php"); ?>
 	<section id="main-image">
 		<div class="wrapper" >
 			<h2><strong>Les arts de la table</strong><br>Tout pour vos réceptions</h2>
@@ -74,7 +75,7 @@
 		?>
 
 	<section>
-		<div class="section-contact">
+		<div class="section-contact" align="center">
 			<h3 class="h3contact">Contacter nous</h3>
 
 			<form class="contacter" action="" method="POST">
@@ -128,6 +129,6 @@
 			</form>
 		</div>
 	</section>
-	<?php include("footer.php"); ?>
+	<?php include("include/footer.php"); ?>
 </body>
 </html>

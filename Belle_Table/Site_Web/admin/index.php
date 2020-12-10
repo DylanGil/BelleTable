@@ -3,14 +3,25 @@
 
 <head>
     <title>Panel Admin V.3</title>   
+
+    <style type="text/css">.dashboard {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
+    
+    <?php 
+
+      $class = ".dashboard" ;
+    
+      require_once('include/en-tete.php'); 
+
+    ?>
+    
+
 </head>
 
-<style type="text/css">.dashboard {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
 
-<?php $class = ".dashboard" ; ?> <!-- permet de definir sur quel page je suis est desactivé le bleu lorsque j'active le sous menu  -->
+<?php  ?> <!-- permet de definir sur quel page je suis est desactivé le bleu lorsque j'active le sous menu  -->
 
 <body>
-    <?php include("css/menu.php"); ?>
+    <?php include("include/menu.php"); ?>
 
         <!-- Page Content  -->
         <div id="content">
@@ -31,7 +42,7 @@
                   <div class="col-lg-3 col-6">
                     <div class="info-box box1" align="center">
                       <div class="text-box">
-                        <h3>223 <i class="fas fa-box"></i></h3>
+                        <h3> <?php $query = mysqli_query($bdd, "SELECT count(*) FROM annonce"); $nbProduit = mysqli_fetch_assoc($query); print_r($nbProduit['count(*)']); ?> <i class="fas fa-box"></i></h3>
                         <p>Articles</p>
                       </div>
                       <div class="info-box-footer">
@@ -88,8 +99,8 @@
             <br>
             <?php 
               @$email = $_SESSION['email'];
-              @$chat = $_POST['chat'];
-              @$tache = $_POST['tache'];
+              @$chat = mysqli_escape_string($bdd, htmlspecialchars($_POST['chat']));
+              @$tache = mysqli_escape_string($bdd, htmlspecialchars($_POST['tache']));
 
               if(isset($_POST['send'])) 
                 {
@@ -115,6 +126,18 @@
                 $id = $_GET['id'];
 
                 $url = "index.php";
+
+                if($_GET['realiser']=="supprimer")
+                {
+                  $modifStatus = "DELETE FROM to_do_list WHERE id_tdl = $id ";
+                  mysqli_query($bdd, $modifStatus);
+                  ?> 
+                    <script language="Javascript">
+                      document.location.replace("<?php echo $url ?>"); 
+                    </script> 
+                  <?php
+                }
+
                 if($_GET['realiser']=="a faire")
                 {
                   $modifStatus = "UPDATE to_do_list SET realiser = 0 WHERE id_tdl = $id ";
@@ -199,6 +222,7 @@
                     <th colspan="4" style="background-color: white;">
                       <center>
                         <h6>
+                          <i class="far fa-times"></i> = supprimer |
                           <i class="far fa-play"></i> = a faire |
                           <i class="far fa-clock"></i> = en cours |
                           <i class="far fa-check"></i> = fini
@@ -226,6 +250,7 @@
                     ?>
                     <tr align="center">
                       <td style="text-align: center; ">
+                        <a href="?realiser=supprimer&id=<?php echo $idtdl ?>"><i class="far fa-times"></i></a>
                         <a href="?realiser=a faire&id=<?php echo $idtdl ?>"><i class="far fa-play"></i></a>
                         <a href="?realiser=en cours&id=<?php echo $idtdl ?>"><i class="far fa-clock"></i></a>
                         <a href="?realiser=fini&id=<?php echo $idtdl ?>"><i class="far fa-check"></i></a>
@@ -251,10 +276,8 @@
               </div>
             </div> 
             <br>
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <?php include("css/footer.php"); ?>
+            <?php include("include/footer.php"); ?>
     </div>
 </body>
 

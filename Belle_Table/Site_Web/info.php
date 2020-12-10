@@ -1,16 +1,22 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start();?>
-	<?php $page = "info.php"; ?>
+	
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Belle Table</title>
+
+	<?php
+		require_once('include/en-tete.php');
+		$page = "info.php"; 
+	?>
+
 </head>
-<center>
-	<body>
-		<?php include("menu.php"); ?>
+<body>
+	<center>
+		<?php include("include/menu.php"); ?>
 		<section id="possibilities">
 			<div class="wrapper">
 				<article style="background-image: url(images/image-1.jpg);">
@@ -50,7 +56,7 @@
 				</p>
 			</div>
 		</section>
-		<?php include("footer.php"); ?>
-	</body>
-</center>
+		<?php include("include/footer.php"); ?>
+	</center>
+</body>
 </html>
