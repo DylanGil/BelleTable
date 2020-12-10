@@ -5,52 +5,58 @@
   <head>
       <title>Panel Admin V.3</title>   
 
-  <style type="text/css">.contact {background-color: #007BFF;} </style> <!-- met la page ou on est en bleu -->
-  <?php $class = ".contact" ; ?>
+      <style type="text/css">.contact {background-color: #007BFF;} </style> <!-- met la page ou on est en bleu -->
+
+      <?php
+        
+        $class = ".contact" ; 
+        
+        require_once("include/en-tete.php");
+        
+
+        $id = str_replace("'","''",$_GET['id']);
+        $requete = "SELECT * FROM contact WHERE id = '{$id}'" ;
+        $query = mysqli_query($bdd, $requete);
+
+        $recupReponse = "SELECT * FROM contact INNER JOIN reponse_contact ON reponse_contact.fk_contact = contact.id and fk_contact = $id" ;
+        $recupReponse = mysqli_query($bdd, $recupReponse);
+
+        if(mysqli_num_rows($query) > 0)
+        { 
+          $ligne = mysqli_fetch_assoc($query);
+          $date = $ligne['date_creation']; 
+          setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
+          $datefr = strftime('%d-%m-%Y à %H:%M:%S', strtotime($date)); 
+          $verif = true;
+        }
+
+        if(isset($_POST['submitRep']) && !empty($_POST['message']))
+        {
+          $nom = $_SESSION['nom'];
+          $prenom = $_SESSION['prenom'];
+          $email = $ligne['email'];
+          $sujet = $ligne['sujet'];
+          $message = str_replace("'","''",$_POST['message']);
+
+          $newReponse = "INSERT INTO reponse_contact(fk_contact, nom, prenom, message, date_rep) VALUES ($id, '$nom', '$prenom', '$message', now())" ;
+          $queryRep = mysqli_query($bdd, $newReponse);
+          $sendRep = true;
+
+          $newEtat = "UPDATE contact SET etat = 'Repondu' WHERE id = $id";
+          $newEtat = mysqli_query($bdd, $newEtat);
+
+          $headers = "From: service@belletable.eu \r\n";
+          $headers .= "Reply-To: service@belletable.eu \n";
+          $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
+          mail($email, $sujet, $message, $headers);
+        }
+      ?>
+
   </head>
 
   <body>
 
-    <?php include("css/menu.php"); ?>
-
-    <?php  
-      $id = str_replace("'","''",$_GET['id']);
-      $requete = "SELECT * FROM contact WHERE id = '{$id}'" ;
-      $query = mysqli_query($bdd, $requete);
-
-      $recupReponse = "SELECT * FROM contact INNER JOIN reponse_contact ON reponse_contact.fk_contact = contact.id and fk_contact = $id" ;
-      $recupReponse = mysqli_query($bdd, $recupReponse);
-
-      if(mysqli_num_rows($query) > 0)
-      { 
-        $ligne = mysqli_fetch_assoc($query);
-        $date = $ligne['date_creation']; 
-        setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
-        $datefr = strftime('%d-%m-%Y à %H:%M:%S', strtotime($date)); 
-        $verif = true;
-      }
-
-      if(isset($_POST['submitRep']) && !empty($_POST['message']))
-      {
-        $nom = $_SESSION['nom'];
-        $prenom = $_SESSION['prenom'];
-        $email = $ligne['email'];
-        $sujet = $ligne['sujet'];
-        $message = str_replace("'","''",$_POST['message']);
-
-        $newReponse = "INSERT INTO reponse_contact(fk_contact, nom, prenom, message, date_rep) VALUES ($id, '$nom', '$prenom', '$message', now())" ;
-        $queryRep = mysqli_query($bdd, $newReponse);
-        $sendRep = true;
-
-        $newEtat = "UPDATE contact SET etat = 'Repondu' WHERE id = $id";
-        $newEtat = mysqli_query($bdd, $newEtat);
-
-        $headers = "From: service@belletable.eu \r\n";
-        $headers .= "Reply-To: service@belletable.eu \n";
-        $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
-        mail($email, $sujet, $message, $headers);
-      }
-    ?>
+    <?php include("include/menu.php"); ?>
 
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -129,11 +135,11 @@
       <h2>Lorem Ipsum Dolor</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-      <?php include("css/footer.php"); ?>
+      <?php include("include/footer.php"); ?>
     </div>
   </body>
 
   </html>
 <?php else: ?>
-  <?php header('Location: contact.php'); ?>
+  <?php header('location: contact.php'); ?>
 <?php endif; ?>

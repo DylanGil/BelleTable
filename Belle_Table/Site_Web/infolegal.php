@@ -1,17 +1,21 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start();?>
-	<?php $page = "infolegal.php"; ?>
+
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
 	<title>Belle Table</title>
-	<style type="text/css">#possibilities p{width: 1200px;}</style> 
+	<style type="text/css">#possibilities p{width: 1200px;}</style>
+	<?php 
+		require_once("include/en-tete.php");
+		$page = "infolegal.php"; 
+	?> 
 </head>
 <center>
 <body>
-	<?php include("menu.php"); ?>
+	<?php include("include/menu.php"); ?>
 	<section id="possibilities">
 		
 		<h2>Informations légales</h2>
@@ -125,7 +129,7 @@
 		<p>Informations personnelles : « les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).</p>
 	</section>
 
-	<?php include("footer.php"); ?>
+	<?php include("include/footer.php"); ?>
 
 </body>
 </html>
