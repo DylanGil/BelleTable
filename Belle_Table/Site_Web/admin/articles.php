@@ -215,7 +215,7 @@
             <?php else: ?>
               <span> <span style="color: red;">Attention !</span> Si vous rajoutez une photo, la nouvelle photo remplacera l'ancienne</span>
             <?php endif; ?>
-            <br>
+            <br><br>
             <input type="submit" name="submit" class="btn btn-success">
              <a href="articles.php" class="btn btn-warning text-white">Annuler</a>
           </form>
