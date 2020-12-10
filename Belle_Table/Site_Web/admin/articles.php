@@ -213,7 +213,7 @@
             <?php if(!isset($annonce['image'])): ?>
               <span> Fichier autorisée : jpg, jpeg, gif, png. 3Mo maximum  </span>
             <?php else: ?>
-              <span> <span style="color: red;">Attention !</span> Si vous rajouter une photo, la nouvelle photo remplacera l'ancienne</span>
+              <span> <span style="color: red;">Attention !</span> Si vous rajoutez une photo, la nouvelle photo remplacera l'ancienne</span>
             <?php endif; ?>
             <br>
             <input type="submit" name="submit" class="btn btn-success">
