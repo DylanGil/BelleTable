@@ -29,7 +29,7 @@
 
 							<?php if ($_SESSION['admin']==1): ?> 
 								<li>
-									<a href="admin">Panel Admin</a>
+									<a href="admin" target="_blank">Panel Admin</a>
 								</li> 
 							<?php endif; ?>
 							<span class="line"></span>
