@@ -93,7 +93,7 @@ echo"</table>";
 				<tr <?php if ($i%2 == 0) echo "bgcolor='green'";?>>
 					<td><?=$ligne["libelle"]; ?></td>
 					<td><?=$ligne["description"]; ?></td> 
-					<!-- td> <a href="addFavoris.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="favicon.png"
+					<!-- td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="favicon.png"
 								height="25px"	
 								width="25px"/></a>/td-->
 				</tr>

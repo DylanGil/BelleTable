@@ -73,7 +73,7 @@
 									<ul class="liste-panier">
 										<?php if(mysqli_num_rows($query) > 0): ?>
 											<?php while ($panier = mysqli_fetch_assoc($query)): ?>
-												<li><a href="favoris.php"><?php echo $panier['titre'] . " " . $panier['prix'] . "€"; ?></a></li>
+												<li><a href="panier.php"><?php echo $panier['titre'] . " " . $panier['prix'] . "€"; ?></a></li>
 											<?php endwhile; ?>
 										<?php else: ?>
 											<li>Panier vide</li>
@@ -108,7 +108,7 @@
 									<ul class="liste-note">
 										<?php if(mysqli_num_rows($query2) > 0): ?>
 											<?php while ($qcm = mysqli_fetch_assoc($query2)): ?>
-												<li><a href="favoris.php"><?php echo $qcm['noteqcm'] . " / 20"; ?></a></li>
+												<li><a href="panier.php"><?php echo $qcm['noteqcm'] . " / 20"; ?></a></li>
 											<?php endwhile; ?>
 										<?php else: ?>
 											<li>Vous n'avez pas fait de QCM rendez vous sur <a href="offre.php" style="color: #007BFF; font-weight: bold;">cette page</a></li>
