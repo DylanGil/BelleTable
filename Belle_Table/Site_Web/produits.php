@@ -17,9 +17,9 @@
 	<?php include("include/menu.php"); ?>
 	<section id="possibilities">
 <h1>Nos Produits</h1>
-<!-- Ici c pour la recherche du medecins specialité ou service, le tableau apparait que lorsque le bouton est appuyer -->
 
-<a href="favoris.php" style="margin-left: 1000px; text-decoration:none;">Mon Panier</a>
+
+<a href="panier.php" style="margin-left: 1000px; text-decoration:none;">Mon Panier</a>
 
 <form action="produits.php" method="post">
 		Rechercher: <input type="text" name="search"> 
@@ -64,7 +64,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 	<td><?=$ligne["titre"]; ?></td>
 	<td><?=$ligne["prix"]; ?></td>
 	<td><?=$ligne["description"]; ?></td>
-	<td><img src="<?=$ligne["image"]; ?>" height="100px" width="100px"></td>  
+	<td><img src="produits/<?=$ligne["image"]; ?>" height="100px" width="100px"></td>  
 	<td><select name = "quantiteSelect">
 		<option value = "un" selected>1
 		<option value = "deux">2
@@ -72,7 +72,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 		<option value = "quatre">4
 		<option value = "cinq">5
 		</select> <br><br> </td>
-	<td> <a href="addFavoris.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="images/panier.png"
+	<td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="images/panier.png"
 				height="25px"	
 				width="25px"/></a></td>
 </tr>
@@ -106,7 +106,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 	<td><?=$ligne["titre"]; ?></td>
 	<td><?=$ligne["prix"]; ?></td>
 	<td><?=$ligne["description"]; ?></td> 
-	<td><img src="<?=$ligne["image"]; ?>" height="100px" width="100px"></td>
+	<td><img src="produits/<?=$ligne["image"]; ?>" height="100px" width="100px"></td>
 	<td><select name = "quantiteSelect">
 		<option value = "un" selected>1
 		<option value = "deux">2
@@ -114,7 +114,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 		<option value = "quatre">4
 		<option value = "cinq">5
 		</select> <br><br> </td>
-	<td> <a href="addFavoris.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="images/panier.png"
+	<td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="images/panier.png"
 				height="25px"	
 				width="25px"/></a></td>
 </tr>
