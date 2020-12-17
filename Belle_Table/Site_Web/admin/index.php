@@ -69,7 +69,7 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box3">
                       <div class="text-box">
-                        <h3>25 <i class="fas fa-shopping-basket"></i></h3>
+                        <h3><?php $query = mysqli_query($bdd, "SELECT count(*) FROM favoriss"); $nbPanier = mysqli_fetch_assoc($query); print_r($nbPanier['count(*)']); ?><i class="fas fa-shopping-basket"></i></h3>
                         <p>Paniers en cours</p>
                       </div>
                       <div class="icon-box">

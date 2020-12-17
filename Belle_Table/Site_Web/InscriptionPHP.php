@@ -12,6 +12,7 @@
 		if (mysqli_num_rows($res) > 0)
 			{	  
 				$ligne = mysqli_fetch_assoc($res);
+				$_SESSION["id"] = $ligne['id'];		
 				$_SESSION["nom"] = $ligne['nom'];
 				$_SESSION["prenom"] = $ligne['prenom'];
 				$_SESSION["telephone"] = $ligne['telephone'];

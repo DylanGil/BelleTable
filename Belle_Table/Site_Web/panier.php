@@ -9,7 +9,7 @@
 	<?php 
 		require_once('include/en-tete.php');
 		$page = "panier.php"; 
-		@$email = $_SESSION["email"] ;
+		@$id = $_SESSION["id"] ;
 	?>
 </head>
 <body>
@@ -31,7 +31,7 @@
 	</tr>
 
 	<?php
-		$req = "select * from favoriss where iduser = '$email'";
+		$req = "SELECT id_panier, image, titre, description, prix FROM `favoriss`, annonce, login WHERE favoriss.idannonce = annonce.idannonce AND iduser = login.id AND iduser = '$id'";
 		$res = mysqli_query($bdd, $req); 
 		$i = 0;
 while($ligne = mysqli_fetch_assoc($res)){
@@ -48,7 +48,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 		<option value = "quatre">4
 		<option value = "cinq">5
 		</select> <br><br> </td>
-	<td> <a href="deletePanier.php?idannonce=<?=$ligne["idannonce"]?>"><img src="images/deleteicon.png"
+	<td> <a href="deletePanier.php?id=<?=$ligne["id_panier"]?>"><img src="images/deleteicon.png"
 				height="25px"	
 				width="25px"/></a></td>
 </tr>

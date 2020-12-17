@@ -21,8 +21,6 @@
 			if(empty($_POST['mdp'])) $error .=' le champ : <strong> mdp </strong> est vide <br>' ;
 			if(empty($_POST['email'])) $error .=' le champ :<strong> email </strong> est vide <br>' ;
 			if(!preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " , $_POST['email'])) $error .=' la syntaxe de votre <strong> email </strong> est incorrect veuillez respecter la syntaxe example@example.com <br>' ;
-			if(empty($_POST['adresse'])) $error .=' le champ : <strong> adresse </strong> est vide <br>' ;
-			if(empty($_POST['tel'])) $error.=' le champ : <strong> telephone </strong>  est vide <br>';
 			if(empty($error))
 			{	
 				$nom= $_POST["nom"];

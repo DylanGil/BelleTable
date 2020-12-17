@@ -10,16 +10,12 @@
 <center>	
 	<?php 
 	
-	$email = $_SESSION["email"] ;
-	$idannonce =$_GET["idannonce"];
-	$titre =$_GET["titre"];
-	$prix =$_GET["prix"];
-	$description =$_GET["description"];
-	$image =$_GET["image"];
+	$id = $_SESSION["id"] ;
+	$idannonce = $_GET["idannonce"];
 	//$quantite = $_GET["quantite"];
 
 
-$req = "INSERT INTO `favoriss`(`idannonce`, `iduser`, `titre`, `prix`, `description`, `image`) VALUES ($idannonce,'$email','$titre',$prix,'$description','$image')";
+$req = "INSERT INTO `favoriss`(`idannonce`, `iduser`) VALUES ($idannonce, $id)";
 $res = mysqli_query($bdd,$req); 
 header("location:panier.php");
 ?>

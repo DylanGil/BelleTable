@@ -72,7 +72,7 @@ while($ligne = mysqli_fetch_assoc($res)){
 		<option value = "quatre">4
 		<option value = "cinq">5
 		</select> <br><br> </td>
-	<td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="images/panier.png"
+	<td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>"><img src="images/panier.png"
 				height="25px"	
 				width="25px"/></a></td>
 </tr>

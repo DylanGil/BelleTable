@@ -12,15 +12,11 @@
 	
 	<?php 
 	
-	//$email = $_SESSION["email"] ;
-	$idannonce =$_GET["idannonce"];
-	// $titre =$_GET["titre"];
-	// $prix =$_GET["prix"];
-	// $description =$_GET["description"];
-	// $image =$_GET["image"];
+	$id =$_GET["id"];
+
 
  
-$req = "DELETE FROM `favoriss` where `idannonce` = $idannonce";
+$req = "DELETE FROM `favoriss` where `id_panier` = $id";
 $res2 = mysqli_query($bdd,$req); 
 header("location:panier.php");
 ?>
