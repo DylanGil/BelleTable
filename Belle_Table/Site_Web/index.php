@@ -21,7 +21,7 @@
 		</div>
 	</section>	
 <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-<script>paypal.Buttons().render('body');</script>
+<script> paypal.Buttons().render('body');</script>
 	<section id="possibilities">
 		<div class="wrapper">
 			<article style="background-image: url(images/image-1.jpg);">
