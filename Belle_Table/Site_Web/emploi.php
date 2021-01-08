@@ -33,15 +33,15 @@
 			  <input type="radio" name="tri" value="DESC">
 			  <label>Decroissant</label>
 			</div>
-
-			<input type="submit" value="Envoyer" name="monBouton"> <br><br><br>
+</br>
+			<input type="submit" value="Envoyer" name="monBouton" class="button-4"> <br><br><br>
 
 <?php
 	if (isset($_POST["monBouton"]))
 	{	
 		?><center>
-		<table width="40%" border="3" cellspacing="0">
-	<tr bgcolor="silver">
+		<table class="table_emploi">
+	<tr>
 		<th> Titre </th>
 		<th> Description </th>
 	</tr>
@@ -72,8 +72,10 @@ echo"</table>";
 <?php
 	if (!isset($_POST["monBouton"]))
 	{ ?>
-	<table width="45%" border="3" cellspacing="0">
-		<tr bgcolor="silver">
+	<!--table width="45%" border="3" cellspacing="0"-->
+		<table class="table_emploi">
+		<!--tr bgcolor="silver"-->
+			<tr>
 			<th> Titre </th>
 			<th> Description </th>
 		</tr>
@@ -90,7 +92,7 @@ echo"</table>";
 			$i = 0;
 			while($ligne = mysqli_fetch_assoc($res2))
 			{ ?>
-				<tr <?php if ($i%2 == 0) echo "bgcolor='green'";?>>
+				<tr <?php if ($i%2 == 0) echo "bgcolor=#FFFFFF";?>>
 					<td><?=$ligne["libelle"]; ?></td>
 					<td><?=$ligne["description"]; ?></td> 
 					<!-- td> <a href="addPanier.php?idannonce=<?=$ligne["idannonce"]?>&titre=<?=$ligne["titre"]?>&prix=<?=$ligne["prix"]?>&description=<?=$ligne["description"]?>&image=<?=$ligne["image"]?>"><img src="favicon.png"
