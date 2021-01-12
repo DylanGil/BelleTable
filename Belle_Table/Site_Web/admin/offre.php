@@ -100,8 +100,7 @@
                 $emploi = mysqli_fetch_assoc($edit);
               } 
           ?>
-          <form method="POST" style="width: 300px; margin: auto;" enctype="multipart/form-data">
-            <span style="color: red;"><?php echo @$errorUpload; ?></span>
+          <form method="POST" style="width: 300px; margin: auto;">
             <br><br>
             <label for="libelle" class="label-produit">Emploi</label><br>
             <input type="texte" name="libelle" id="libelle" value="<?php echo @$emploi['libelle'] ?>" placeholder="Emploi" class="form-control">
@@ -138,7 +137,7 @@
                 <td><?php echo $i; ?></td>
                 <td><?php echo $offre['libelle']; ?></td>
                 <td><?php echo $offre['description']; ?></td>
-                <td><?php echo $offre['note']; ?>€</td>
+                <td><?php echo $offre['note']; ?></td>
                 <td style="white-space: nowrap;">
                   <a class="btn btn-primary" href="?action=edit&id=<?=$offre["id"]?>">Modifier</a>
                   <a class="btn btn-danger" href="?action=delete&id=<?=$offre["id"]?>">Supprimer</a> 
