@@ -3,9 +3,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="produits.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="produits.css">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 	<title>produit</title>
 	

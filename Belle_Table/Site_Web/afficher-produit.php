@@ -60,7 +60,7 @@
 	              </div>
 	              
 	              <div align="center">
-					<form method="POST" action="addPanier.php?p=<?php echo $id; ?>&idProduit=<?php echo $id; ?>" style="margin: inherit;">
+					<form method="POST" action="addPanier.php?idProduit=<?php echo $id; ?>" style="margin: inherit;">
 						<label for="quantite">Quantité :</label><br>
 						<input type="number" class="quantite" id="quantite" title="veuillez sélectionner une valeur supérieur ou égale à 1" name="quantite" value="1"><br>
 						<label for="submit" class="button-4 btn-edit">Ajouter au panier <i class="fa fa-shopping-cart logo-panier"></i></label>
