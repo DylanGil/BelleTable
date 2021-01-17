@@ -23,6 +23,13 @@
 	        mysqli_query($bdd, "DELETE FROM produit WHERE idproduit = '$id'");
 	     	header('location:produits.php');
 	      } 
+	    if(isset($_POST['monBouton']))
+	    {
+	    	$critere = $_POST['filtreSearch'];		
+			$search =$_POST["search"];
+			$tri =$_POST["tri"];
+			$req = mysqli_query($bdd, "SELECT * FROM produit where $critere like '%$search%' order by $critere $tri");
+	    }
     ?>
 
 </head>
@@ -32,29 +39,30 @@
 	<section id="possibilities">
 		<div align="center">
 			<h1>Nos Produits</h1>
-			<a href="panier.php" style="margin-left: 1000px; text-decoration:none;">Mon Panier</a>
+			<a href="panier.php" class="button-4" style="margin-left: 1000px; text-decoration:none;">Mon Panier <i class="fas fa-shopping-cart"></i></a>
 
 			<form action="produits.php" method="POST">
-				<label for="search">Rechercher:</label><br><br>
+				<label for="search">Rechercher:</label>
 				<input type="text" id="search" name="search"> 
 				<br><br>
 				
 				<label for="filtreSearch">Par : </label>
-				<select name="filtreSearch" id="filtreSearch">
+				<select name="filtreSearch" id="filtreSearch" class="select">
 					<option value = "titre" selected>Titre </option>
 					<option value = "prix">Prix </option>
 					<option value = "description">Description </option>
 				</select> <br><br> 
 				<div>
-					<div>Tri :</div>
+					Tri :
 				  	<input type="radio" name="tri" value="ASC"checked>
 				  	<label>Croissant</label>
 				  	<input type="radio" name="tri" value="DESC">
 				  	<label>Decroissant</label>
 				</div>
 				<br>
-				<input type="submit" value="Envoyer" name="monBouton"> <br><br><br>
+				<input type="submit" class="button-4" value="Envoyer" name="monBouton"> <br><br><br>
 			</form>
+
 			<div class="content-product">
 				<?php $i = 0; ?>
 				<?php while($produit = mysqli_fetch_assoc($req)): ?>

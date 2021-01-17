@@ -110,7 +110,7 @@
 					<form action="InscriptionPHP.php" method="post" style="margin: inherit;"><h1>Se connecter</h1>
 						<br>
 						<label for="email2"> E-mail: </label><br>
-						<input type="email" name="email" id="email2" placeholder="azerty@gmail.com" required><br><br>
+						<input type="email" name="email" id="email2" placeholder="admin@gmail.com" required><br><br>
 						<label for="mdp2">Mot de passe: </label><br>
 						<input type="password" name="mdp" id="mdp2" placeholder="Mot de passe" required><br><br>
 						<br>

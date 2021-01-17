@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 08 jan. 2021 à 12:12
+-- Généré le :  Dim 17 jan. 2021 à 11:33
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -25,33 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annonce`
---
-
-DROP TABLE IF EXISTS `annonce`;
-CREATE TABLE IF NOT EXISTS `annonce` (
-  `idannonce` int(50) NOT NULL AUTO_INCREMENT,
-  `titre` text NOT NULL,
-  `prix` float NOT NULL,
-  `description` text DEFAULT NULL,
-  `image` text DEFAULT NULL,
-  UNIQUE KEY `idannonce` (`idannonce`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `annonce`
---
-
-INSERT INTO `annonce` (`idannonce`, `titre`, `prix`, `description`, `image`) VALUES
-(25, 'CuillÃ¨re x3', 25, 'lot de 3 cuillÃ¨re en acier inoxydable', 'lot2.jpg'),
-(23, 'Fourchette x3', 12, 'lot de 3 fourchette en acier inoxydable', 'lot.jpg'),
-(24, 'CuillÃ¨re', 15, 'CuillÃ¨re en acier inoxydable (vendu par unitÃ©)', 'cuillere.jpg'),
-(26, 'Table basse', 469, 'Table basse ronde marron', 'table.jpg'),
-(22, 'Fourchette', 5, 'Fourchette en acier inoxydable (vendu par unitÃ©)', 'fourchette.jpg');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `contact`
 --
 
@@ -66,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `date_creation` datetime NOT NULL,
   `etat` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `contact`
@@ -89,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `emploi` (
   `description` varchar(255) CHARACTER SET utf8 NOT NULL,
   `note` int(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `emploi`
@@ -100,29 +73,6 @@ INSERT INTO `emploi` (`id`, `libelle`, `description`, `note`) VALUES
 (2, 'Menuisier', 'Tailler du bois', 4),
 (3, 'Fermier', 'Elever le bÃ©tail', 10),
 (4, 'Coursier', 'Coursir', 15);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `favoriss`
---
-
-DROP TABLE IF EXISTS `favoriss`;
-CREATE TABLE IF NOT EXISTS `favoriss` (
-  `id_panier` int(11) NOT NULL AUTO_INCREMENT,
-  `idannonce` int(50) NOT NULL,
-  `iduser` text NOT NULL,
-  PRIMARY KEY (`id_panier`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `favoriss`
---
-
-INSERT INTO `favoriss` (`id_panier`, `idannonce`, `iduser`) VALUES
-(30, 25, '3'),
-(27, 26, '4'),
-(31, 24, '3');
 
 -- --------------------------------------------------------
 
@@ -142,17 +92,18 @@ CREATE TABLE IF NOT EXISTS `login` (
   `noteqcm` int(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `login`
 --
 
 INSERT INTO `login` (`id`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`, `noteqcm`) VALUES
-(1, 'admin', 'admin', 651206977, 'admin', 'natsu2paris@yopmail.com', 1, NULL),
-(2, 'test', 'test', 651206977, 'test', 'test@gmail.com', 0, 10),
+(1, 'admin', 'admin', NULL, 'admin', 'admin@gmail.com', 1, NULL),
+(5, 'test', 'test', 606060606, 'test', 'test@gmail.com', 0, 10),
 (3, 'Partouche', 'Nathan', 684171272, 'nathan', 'nathanpartouche@hotmail.fr', 1, 20),
-(4, 'Nicolle', 'Dylan', 612345678, 'Dylan', 'dylan@gmail.com', 0, 16);
+(4, 'Nicolle', 'Dylan', 612345678, 'Dylan', 'dylan@gmail.com', 1, 16),
+(2, 'Gil Amaro', 'Dylan', 651206977, 'dylan', 'natsu2paris@yopmail.com', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,15 +117,82 @@ CREATE TABLE IF NOT EXISTS `message` (
   `fk_utilisateur` int(11) NOT NULL,
   `message` varchar(255) NOT NULL,
   PRIMARY KEY (`id_message`)
-) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `message`
 --
 
 INSERT INTO `message` (`id_message`, `fk_utilisateur`, `message`) VALUES
-(65, 3, 'salut j\'ai rajouter des nouveau truc dans la to do list'),
-(70, 1, 'sa marche je vais voir ;)');
+(1, 3, 'salut j\'ai rajouter des nouveau truc dans la to do list'),
+(2, 1, 'sa marche je vais voir ;)');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id_panier` int(11) NOT NULL AUTO_INCREMENT,
+  `idproduit` int(50) NOT NULL,
+  `iduser` text NOT NULL,
+  `quantite` int(11) NOT NULL,
+  PRIMARY KEY (`id_panier`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`id_panier`, `idproduit`, `iduser`, `quantite`) VALUES
+(1, 26, '4', 7),
+(10, 25, '3', 4),
+(11, 23, '3', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `idproduit` int(50) NOT NULL AUTO_INCREMENT,
+  `titre` text NOT NULL,
+  `old_prix` int(11) DEFAULT NULL,
+  `prix` float NOT NULL,
+  `description` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  UNIQUE KEY `idannonce` (`idproduit`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`idproduit`, `titre`, `old_prix`, `prix`, `description`, `image`) VALUES
+(25, 'CuillÃ¨re x3', 25, 15, 'lot de 3 cuillÃ¨re en acier inoxydable', 'lot2.png'),
+(23, 'Fourchette x3', 12, 10, 'lot de 3 fourchette en acier inoxydable', 'lot.png'),
+(24, 'CuillÃ¨re', 7, 4, 'CuillÃ¨re en acier inoxydable (vendu par unitÃ©)', 'cuillere.png'),
+(26, 'Table basse', NULL, 470, 'Table basse ronde marron', 'table.jpg'),
+(22, 'Fourchette', 5, 4, 'Fourchette en acier inoxydable (vendu par unitÃ©)', 'fourchette.png');
+
+--
+-- Déclencheurs `produit`
+--
+DROP TRIGGER IF EXISTS `ancienPrix`;
+DELIMITER $$
+CREATE TRIGGER `ancienPrix` BEFORE UPDATE ON `produit` FOR EACH ROW begin
+set new.old_prix = old.prix;
+if old.old_prix = old.prix or 
+old.old_prix < old.prix then
+set new.old_prix = NULL;
+end if;
+end
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -225,9 +243,7 @@ INSERT INTO `question` (`label`, `id`, `niveau`) VALUES
 ('Comment on appel un oiseau qui se gratte que d’un coté ?', 27, 1),
 ('Qu’est-ce qu’une luciole qui a pris du viagra ?', 28, 0),
 ('Qui a une couronne et vit dans un palais ?', 29, 1),
-('Pourquoi un agriculteur ne peut se marier avec une fille prenommee claire ?', 30, 0),
-('sdsdd', 38, 1),
-('azeaze', 39, 0);
+('Pourquoi un agriculteur ne peut se marier avec une fille prenommee claire ?', 30, 0);
 
 -- --------------------------------------------------------
 
@@ -397,14 +413,14 @@ CREATE TABLE IF NOT EXISTS `reponse_contact` (
   `message` text NOT NULL,
   `date_rep` datetime NOT NULL,
   PRIMARY KEY (`id_rep`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponse_contact`
 --
 
 INSERT INTO `reponse_contact` (`id_rep`, `fk_contact`, `nom`, `prenom`, `message`, `date_rep`) VALUES
-(46, 1, 'Partouche', 'Nathan', 'bonjour, nous somme dÃ©soler mais nous ne recrutons pas d\'alternant.\r\n\r\nCordialement', '2020-10-22 23:06:38');
+(1, 1, 'Partouche', 'Nathan', 'bonjour, nous somme dÃ©soler mais nous ne recrutons pas d\'alternant.\r\n\r\nCordialement', '2020-10-22 23:06:38');
 
 -- --------------------------------------------------------
 
@@ -422,41 +438,6 @@ CREATE TABLE IF NOT EXISTS `resultat` (
   PRIMARY KEY (`idqcm`)
 ) ENGINE=MyISAM AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `resultat`
---
-
-INSERT INTO `resultat` (`idqcm`, `login`, `date`, `note`, `niveau`) VALUES
-(101, 'a@a.a', '2020-10-12 00:21:32', 0, 1),
-(102, 'a@a.a', '2020-10-12 00:22:31', 3, 1),
-(103, 'a@a.a', '2020-10-12 00:22:47', 3, 1),
-(104, 'natsu2paris@yopmail.com', '2020-11-20 14:51:35', 4, 0),
-(105, 'natsu2paris@yopmail.com', '2020-11-20 14:57:40', 4, 0),
-(106, 'natsu2paris@yopmail.com', '2020-11-20 14:58:53', 4, 0),
-(107, 'natsu2paris@yopmail.com', '2020-11-20 15:00:51', 3, 1),
-(108, 'natsu2paris@yopmail.com', '2020-11-20 15:04:17', 2, 1),
-(109, 'natsu2paris@yopmail.com', '2020-11-20 15:05:37', 2, 1),
-(110, 'natsu2paris@yopmail.com', '2020-11-20 15:06:06', 2, 1),
-(111, 'natsu2paris@yopmail.com', '2020-11-20 15:06:15', 2, 1),
-(112, 'natsu2paris@yopmail.com', '2020-11-20 15:06:23', 2, 1),
-(113, 'natsu2paris@yopmail.com', '2020-11-20 15:06:45', 2, 1),
-(114, 'natsu2paris@yopmail.com', '2020-11-20 15:11:18', 2, 1),
-(115, 'natsu2paris@yopmail.com', '2020-11-20 15:26:23', 4, 1),
-(116, 'natsu2paris@yopmail.com', '2020-12-04 13:45:19', 4, 0),
-(117, 'natsu2paris@yopmail.com', '2020-12-04 14:42:10', 1, 1),
-(118, 'natsu2paris@yopmail.com', '2020-12-04 14:43:06', 1, 1),
-(119, 'natsu2paris@yopmail.com', '2020-12-04 14:43:31', 1, 1),
-(120, 'natsu2paris@yopmail.com', '2020-12-04 14:45:29', 1, 1),
-(121, 'natsu2paris@yopmail.com', '2020-12-04 14:49:01', 2, 1),
-(122, 'natsu2paris@yopmail.com', '2020-12-04 14:52:44', 2, 1),
-(123, 'natsu2paris@yopmail.com', '2020-12-04 14:54:01', 2, 1),
-(124, 'natsu2paris@yopmail.com', '2020-12-04 14:59:00', 0, 1),
-(125, 'dylan@gmail.com', '2020-12-04 14:59:26', 8, 1),
-(126, 'dylan@gmail.com', '2020-12-04 15:00:15', 8, 1),
-(127, 'dylan@gmail.com', '2020-12-04 15:02:47', 2, 1),
-(128, 'dylan@gmail.com', '2020-12-04 15:03:53', 2, 1),
-(129, 'dylan@gmail.com', '2020-12-04 15:04:13', 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -470,7 +451,16 @@ CREATE TABLE IF NOT EXISTS `to_do_list` (
   `tache` varchar(255) NOT NULL,
   `realiser` int(1) NOT NULL,
   PRIMARY KEY (`id_tdl`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `to_do_list`
+--
+
+INSERT INTO `to_do_list` (`id_tdl`, `fk_utilisateur`, `tache`, `realiser`) VALUES
+(3, 3, 'rajouter la nouvelle table basse ', 2),
+(1, 3, 'rajouter le nouveaux lot de fourchette en bois', 0),
+(2, 3, 'repondre au ticket', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
