@@ -141,5 +141,5 @@
 
   </html>
 <?php else: ?>
-  <?php header('location: contact.php'); ?>
+  <?php header('location: tickets.php'); ?>
 <?php endif; ?>

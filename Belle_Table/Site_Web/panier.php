@@ -31,7 +31,7 @@
 	</tr>
 
 	<?php
-		$req = "SELECT id_panier, image, titre, description, prix FROM `favoriss`, annonce, login WHERE favoriss.idannonce = annonce.idannonce AND iduser = login.id AND iduser = '$id'";
+		$req = "SELECT id_panier, image, titre, description, prix FROM `panier`, produit, login WHERE panier.idproduit = produit.idproduit AND iduser = login.id AND iduser = '$id'";
 		$res = mysqli_query($bdd, $req); 
 		$i = 0;
 while($ligne = mysqli_fetch_assoc($res)){

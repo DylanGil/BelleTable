@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>Liste des membres inscrit</title>   
+    <title>Demande de ticket</title>   
 
-    <style type="text/css">.contact {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
+    <style type="text/css">.tickets {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
     
     <?php 
 
-      $class = ".contact";
+      $class = ".tickets";
 
       require_once("include/en-tete.php");
       
@@ -30,10 +30,10 @@
             </nav>
               
             <div align="center">
-              <div class="info-box box4" style="width: 150px; height: 130px;">
+              <div class="info-box box4" style="width: 150px; height: 110px;">
                 <div class="text-box">
                   <h3><?php $countUtilisateur = "SELECT count(id) FROM contact"; $reqNbUtilisateur = mysqli_query($bdd,$countUtilisateur); $nbUser = mysqli_fetch_assoc($reqNbUtilisateur); echo $nbUser['count(id)']; ?> <i class="fas fa-id-card-alt"></i></h3>
-                  <p>Demande de contact</p>
+                  <p>Tickets</p>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
               <?php elseif(@$_GET['etat']): ?>
                 Modification de l'etat
               <?php else: ?>
-                Demande de contact
+                Demande de ticket
               <?php endif; ?>
             </h2>
           </center>
@@ -135,7 +135,7 @@
                           <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cog"></i> Options <i class="fas fa-arrow-down"></i> </button> 
                           <style type="text/css">.dropdown-item:hover{background-color: #F2F2F2;}</style>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="afficher-contact.php?id=<?= $userInfo['id']; ?>" style=""><i class="far fa-eye"></i> Voir</a>
+                            <a class="dropdown-item" href="afficher-tickets.php?id=<?= $userInfo['id']; ?>" style=""><i class="far fa-eye"></i> Voir</a>
                             <a class="dropdown-item" href="?etat=<?php echo $userInfo['etat']; ?>&id=<?php echo $userInfo['id']; ?>"><i class="fas fa-edit"></i>Modifier l'état</a>
                           </div>
                         </div>  
@@ -190,20 +190,18 @@
                 <strong><?php echo $newEtat; ?></strong>
               </span>
               <br><br>
-              <a href="contact.php" class="btn btn-success">Revenir a l'accueil</a>
+              <a href="tickets.php" class="btn btn-success">Revenir a l'accueil</a>
             </center>
           <?php endif; ?>
 
           <?php if(@$filtre): ?>
             <center>
-              <a href="contact.php" class="btn btn-success">Retirez les filtre</a>
+              <a href="tickets.php" class="btn btn-success">Retirez les filtre</a>
             </center>
           <?php endif; ?>
 
           <br>
-          <h2>Lorem Ipsum Dolor</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+        
           <?php include("include/footer.php"); ?>
     </div>
 </body>

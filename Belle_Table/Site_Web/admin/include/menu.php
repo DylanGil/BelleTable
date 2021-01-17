@@ -29,9 +29,9 @@
                 <li class="menuclick dropright">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fad fa-analytics"></i> Statistique </a>
                     <ul class="collapse list-unstyled sous-menu" id="homeSubmenu">
-                        <li>
+                        <!-- <li>
                             <a class="articles-vendu" href="articles-vendu.php"><i class="far fa-dollar-sign"></i> Articles vendu</a>
-                        </li>
+                        </li> -->
 
                         <li>
                             <a class="liste-panier" href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
@@ -44,14 +44,14 @@
                     </ul>
                 </li>
 
-                <li class="articles">
-                    <a href="articles.php"><i class="fas fa-edit"></i> Gérer les articles </a>
+                <li class="produits">
+                    <a href="produits.php"><i class="fas fa-edit"></i> Gérer les produits </a>
                 </li>
                 <li class="offre">
                     <a href="offre.php"><i class="fas fa-plus"></i> Ajouter un offre d'emploie </a>
                 </li>
-                <li class="contact">
-                    <a href="contact.php"><i class="fas fa-ticket-alt"></i> Contact <span class="badge badge-danger"><?php $query = mysqli_query($bdd, "SELECT count(*) FROM contact WHERE etat = 'Nouveau'"); $newRep = mysqli_fetch_assoc($query); print_r($newRep['count(*)']); ?></span> </a>
+                <li class="tickets">
+                    <a href="tickets.php"><i class="fas fa-ticket-alt"></i> Tickets <span class="badge badge-danger"><?php $query = mysqli_query($bdd, "SELECT count(*) FROM contact WHERE etat = 'Nouveau'"); $newRep = mysqli_fetch_assoc($query); print_r($newRep['count(*)']); ?></span> </a>
                 </li>
             </ul>
         

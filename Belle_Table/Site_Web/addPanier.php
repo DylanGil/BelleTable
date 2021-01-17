@@ -1,24 +1,26 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>FormulaireSpecialte</title>
-</head>
-<body>
-<?php include('include/en-tete.php'); ?>
-<center>	
-	<?php 
-	
-	$id = $_SESSION["id"] ;
-	$idannonce = $_GET["idannonce"];
-	//$quantite = $_GET["quantite"];
+<?php if (isset($_SESSION['id'])): ?>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajouter au panier</title>
+	</head>
+	<body>
+		<?php include('include/en-tete.php'); ?>	
+		<?php 
+			
+			$id = $_SESSION["id"] ;
+			$idproduit = mysqli_real_escape_string($bdd, htmlspecialchars($_GET["idProduit"]));
+			$quantite = mysqli_real_escape_string($bdd, htmlspecialchars($_POST["quantite"]));
 
+			$req = "INSERT INTO `panier`(idproduit, iduser, quantite) VALUES ($idproduit, $id, $quantite)";
+			$res = mysqli_query($bdd,$req); 
+			header("location:panier.php");
+		?>
 
-$req = "INSERT INTO `favoriss`(`idannonce`, `iduser`) VALUES ($idannonce, $id)";
-$res = mysqli_query($bdd,$req); 
-header("location:panier.php");
-?>
-
-</body>
-</html>
+	</body>
+	</html>
+<?php else: ?>
+	<?php header('location:produits.php'); ?>
+<?php endif ?>

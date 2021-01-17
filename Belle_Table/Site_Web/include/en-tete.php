@@ -12,7 +12,7 @@
 	.sous-menu {display: none; z-index: 999; position: relative; left: 12px;} 
 	.visible {display: flex; justify-content: flex-end;} 
 	.sous-menu li {padding: 7px 0; margin-left: 10px; text-align: left;}
-	.sous-menu li:hover {background-color: red;}
+	.sous-menu li:hover {text-align: right;}
 	.ulsm {background: #ff7a00; display: flex; flex-direction: column; border-radius: 12px;}
 	.ulsm li a {color: white;}
 </style>

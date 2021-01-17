@@ -10,7 +10,7 @@
     background: #007BFF;}</style> 
 
     <?php  
-      $req = "SELECT favoriss.idannonce, iduser, email, SUM(prix) FROM `favoriss`, annonce, login WHERE favoriss.idannonce = `annonce`.`idannonce` AND iduser = id GROUP BY iduser " ;
+      $req = "SELECT panier.idproduit, iduser, email, SUM(prix) FROM `panier`, produit, login WHERE panier.idproduit = `produit`.`idproduit` AND iduser = id GROUP BY iduser " ;
       $requete = mysqli_query($bdd,$req);
       $i = 0;
       
@@ -19,7 +19,7 @@
           $critere = $_POST["critere"];   
           $search =$_POST["search"];
           $tri =$_POST["tri"];
-          $req = "SELECT * FROM favoriss where $critere like '%$search%' order by $critere $tri";
+          $req = "SELECT * FROM panier where $critere like '%$search%' order by $critere $tri";
           $requete = mysqli_query($bdd, $req); 
           $filtre = true ;
         }
@@ -27,7 +27,7 @@
       if(@$_GET['action']=="delete")
       {
         @$id = mysqli_escape_string($bdd, htmlspecialchars($_GET['id']));
-        mysqli_query($bdd, "DELETE FROM favoriss WHERE iduser = '$id'");
+        mysqli_query($bdd, "DELETE FROM panier WHERE iduser = '$id'");
         header('location: liste-panier.php');
       }
     ?>
@@ -115,7 +115,7 @@
                       ?>
                       <td><?php echo $i; ?></td>
                       <td><?php echo $basketInfo['email']; ?></td>
-                      <td><?php $query = mysqli_query($bdd, "SELECT count(*) FROM `favoriss` WHERE iduser = '$iduser'"); @$nbArticle = mysqli_fetch_assoc($query); echo @$nbArticle['count(*)']; ?> <i class="fas fa-box"></i></td>
+                      <td><?php $query = mysqli_query($bdd, "SELECT count(*) FROM `panier` WHERE iduser = '$iduser'"); @$nbArticle = mysqli_fetch_assoc($query); echo @$nbArticle['count(*)']; ?> <i class="fas fa-box"></i></td>
                       <td><?php echo $basketInfo['SUM(prix)']; ?>€</td>
                       <td>
                         <div class="dropdown">

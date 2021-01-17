@@ -2,17 +2,17 @@
 <html>
 
 <head>
-    <title>Panel Admin V.3</title>   
+    <title>Gestion des produits</title>   
     
-    <style type="text/css">.articles {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
+    <style type="text/css">.produits {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
 
     <?php 
 
-      $class = ".articles" ; 
+      $class = ".produits" ; 
       
       require_once("include/en-tete.php");
 
-      $req = mysqli_query($bdd, "SELECT * FROM annonce ORDER BY idannonce");
+      $req = mysqli_query($bdd, "SELECT * FROM produit ORDER BY idproduit");
 
       @$id = mysqli_escape_string($bdd, htmlspecialchars($_GET['id']));
 
@@ -52,9 +52,9 @@
 
                   // Le fichier a étais stocker dans le repertoire "produits"
 
-                  mysqli_query($bdd, "INSERT INTO annonce(titre, prix, description, image) VALUES ('$titre', '$prix', '$desc', '$img') ");
+                  mysqli_query($bdd, "INSERT INTO produit(titre, prix, description, image) VALUES ('$titre', '$prix', '$desc', '$img') ");
                   
-                  header('location: articles.php');
+                  header('location:produits.php');
 
                 }
 
@@ -76,7 +76,7 @@
 
         if($_GET['action']=="edit")
         {
-          if($_FILES['image']['name']) // si l'annonce est modifié est qu'une nouvelle photo est ajouté 
+          if($_FILES['image']['name']) // si l'produit est modifié est qu'une nouvelle photo est ajouté 
           {
             if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)
             {   
@@ -102,9 +102,9 @@
 
                   // Le fichier a étais stocker dans le repertoire "produits"
 
-                  mysqli_query($bdd, "UPDATE annonce SET titre = '$titre', prix = '$prix', description = '$desc', image = '$img' WHERE idannonce = '$id'");
+                  mysqli_query($bdd, "UPDATE produit SET titre = '$titre', prix = '$prix', description = '$desc', image = '$img' WHERE idproduit = '$id'");
                   
-                  header('location: articles.php');
+                  header('location:produits.php');
                 }
 
                 else 
@@ -123,19 +123,19 @@
             }
           }  
           else 
-            // si l'annonce est modifié MAIS que la photo n'est pas modifié alors garder l'ancienne photo contenue dans le hidden "oldimage" 
+            // si l'produit est modifié MAIS que la photo n'est pas modifié alors garder l'ancienne photo contenue dans le hidden "oldimage" 
           {
-            mysqli_query($bdd, "UPDATE annonce SET titre = '$titre', prix = '$prix', description = '$desc', image = '$img2' WHERE idannonce = '$id'");
+            mysqli_query($bdd, "UPDATE produit SET titre = '$titre', prix = '$prix', description = '$desc', image = '$img2' WHERE idproduit = '$id'");
           }
                   
-          header('location: articles.php');
+          header('location:produits.php');
         }
       }
 
       if(@$_GET['action']=="delete")
       {
-        mysqli_query($bdd, "DELETE FROM annonce WHERE idannonce = '$id'");
-        header('location: articles.php');
+        mysqli_query($bdd, "DELETE FROM produit WHERE idproduit = '$id'");
+        header('location:produits.php');
       }
     ?>
 
@@ -164,13 +164,13 @@
           <div class="text-box" style="padding-top: 35px;">
             <h3> 
               <?php 
-                $query = mysqli_query($bdd, "SELECT count(*) FROM annonce"); 
+                $query = mysqli_query($bdd, "SELECT count(*) FROM produit"); 
                 $nbProduit = mysqli_fetch_assoc($query); 
                 echo $nbProduit['count(*)']; 
               ?> 
               <i class="fas fa-box"></i>
             </h3>
-            <p>Articles</p>
+            <p>Produits</p>
           </div>
         </div>
       </div>
@@ -191,33 +191,33 @@
             if(@$_GET['action']=="edit")
               {
                 @$id = mysqli_escape_string($bdd, htmlspecialchars($_GET['id']));
-                $edit = mysqli_query($bdd, "SELECT * FROM annonce WHERE idannonce = '$id'");
-                $annonce = mysqli_fetch_assoc($edit);
+                $edit = mysqli_query($bdd, "SELECT * FROM produit WHERE idproduit = '$id'");
+                $produit = mysqli_fetch_assoc($edit);
               } 
           ?>
           <form method="POST" style="width: 300px; margin: auto;" enctype="multipart/form-data">
             <span style="color: red;"><?php echo @$errorUpload; ?></span>
             <br><br>
             <label for="titre" class="label-produit">Titre</label><br>
-            <input type="texte" name="titre" id="titre" value="<?php echo @$annonce['titre'] ?>" placeholder="titre" class="form-control">
+            <input type="texte" name="titre" id="titre" value="<?php echo @$produit['titre'] ?>" placeholder="titre" class="form-control">
             <br>
             <label for="prix" class="label-produit">Prix</label><br>
-            <input type="number" name="prix" id="prix" value="<?php echo @$annonce['prix'] ?>" placeholder="prix" class="form-control">
+            <input type="number" name="prix" id="prix" value="<?php echo @$produit['prix'] ?>" placeholder="prix" class="form-control">
             <br>
             <label for="desc" class="label-produit">Description</label><br>
-            <input type="texte" name="desc" id="desc" value="<?php echo @$annonce['description'] ?>" placeholder="Description" class="form-control">
+            <input type="texte" name="desc" id="desc" value="<?php echo @$produit['description'] ?>" placeholder="Description" class="form-control">
             <br>
             <label for="image" class="label-produit form-control">Image <i class="fas fa-download"></i></label>
             <input type="file" hidden="" name="image" id="image" class="form-control">
-            <input type="hidden" name="oldimage" value="<?php echo @$annonce['image'] ?>">
-            <?php if(!isset($annonce['image'])): ?>
+            <input type="hidden" name="oldimage" value="<?php echo @$produit['image'] ?>">
+            <?php if(!isset($produit['image'])): ?>
               <span> Fichier autorisée : jpg, jpeg, gif, png. 3Mo maximum  </span>
             <?php else: ?>
               <span> <span style="color: red;">Attention !</span> Si vous rajoutez une photo, la nouvelle photo remplacera l'ancienne</span>
             <?php endif; ?>
             <br><br>
             <input type="submit" name="submit" class="btn btn-success">
-             <a href="articles.php" class="btn btn-warning text-white">Annuler</a>
+             <a href="produits.php" class="btn btn-warning text-white">Annuler</a>
           </form>
 
       <?php endif; ?>
@@ -246,8 +246,8 @@
                 <td><?php echo $produit['description']; ?></td>
                 <td><?php echo $produit['prix']; ?>€</td>
                 <td style="white-space: nowrap;">
-                  <a class="btn btn-primary" href="?action=edit&id=<?=$produit["idannonce"]?>">Modifier</a>
-                  <a class="btn btn-danger" href="?action=delete&id=<?=$produit["idannonce"]?>">Supprimer</a> 
+                  <a class="btn btn-primary" href="?action=edit&id=<?=$produit["idproduit"]?>">Modifier</a>
+                  <a class="btn btn-danger" href="?action=delete&id=<?=$produit["idproduit"]?>">Supprimer</a> 
                 </td> 
               </tr>
             <?php endwhile; ?>

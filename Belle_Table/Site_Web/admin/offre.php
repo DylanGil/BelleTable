@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Panel Admin V.3</title>   
+    <title>Ajouter une offre d'emploie</title>   
     
     <style type="text/css">.offre {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
 

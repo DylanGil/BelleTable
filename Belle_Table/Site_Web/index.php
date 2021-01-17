@@ -20,49 +20,7 @@
 			<a href="offre.php" class="button-1">Nos offres d'emplois</a>
 		</div>
 	</section>	
-	<!-- <div id="smart-button-container">
-	      <div style="text-align: center;">
-	        <div id="paypal-button-container"></div>
-	      </div>
-	    </div> -->
-	  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR" data-sdk-integration-source="button-factory"></script>
-	  <script>
-	    function initPayPalButton() {
-	      paypal.Buttons({
-	        style: {
-	          shape: 'rect',
-	          color: 'gold',
-	          layout: 'vertical',
-	          label: 'paypal',
-	          
-	        },
-
-	        createOrder: function(data, actions) {
-	          return actions.order.create({
-	            purchase_units: [{"description":"Cuillère en acier inoxydable (vendu par unité)","amount":{"currency_code":"EUR","value":0.01}}]
-	          });
-	        },
-
-	        onApprove: function(data, actions) {
-	          return actions.order.capture().then(function(details) {
-	            alert('Transaction completed by ' + details.payer.name.given_name + '!');
-	          });
-	        },
-
-	        onError: function(err) {
-	          console.log(err);
-	        }
-	      }).render('#paypal-button-container');
-	    }
-	    initPayPalButton();
-	  </script>
-<!-- 	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="HSD4TQ245EXGU">
-<input type="image" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
-<img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-</form>
- -->
+	
 	<section id="possibilities">
 		<div class="wrapper">
 			<article style="background-image: url(images/image-1.jpg);">

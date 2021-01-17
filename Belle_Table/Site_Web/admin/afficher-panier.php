@@ -13,7 +13,7 @@
         
         @$id = mysqli_escape_string($bdd, htmlspecialchars($_GET['id']));
         
-        $req = mysqli_query($bdd, "SELECT id_panier, image, titre, description, prix FROM `favoriss`, annonce, login WHERE favoriss.idannonce = annonce.idannonce AND iduser = login.id AND iduser = '$id'");
+        $req = mysqli_query($bdd, "SELECT id_panier, image, titre, description, prix FROM `panier`, produit, login WHERE panier.idproduit = produit.idproduit AND iduser = login.id AND iduser = '$id'");
 
       ?>
 
