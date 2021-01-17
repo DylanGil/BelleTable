@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 17 jan. 2021 à 11:33
+-- Généré le :  Dim 17 jan. 2021 à 11:36
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 
 INSERT INTO `login` (`id`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`, `noteqcm`) VALUES
 (1, 'admin', 'admin', NULL, 'admin', 'admin@gmail.com', 1, NULL),
-(5, 'test', 'test', 606060606, 'test', 'test@gmail.com', 0, 10),
+(5, 'utilisateur', 'utilisateur', 606060606, 'utilisateur', 'utilisateur@gmail.com', 0, 10),
 (3, 'Partouche', 'Nathan', 684171272, 'nathan', 'nathanpartouche@hotmail.fr', 1, 20),
 (4, 'Nicolle', 'Dylan', 612345678, 'Dylan', 'dylan@gmail.com', 1, 16),
 (2, 'Gil Amaro', 'Dylan', 651206977, 'dylan', 'natsu2paris@yopmail.com', 1, NULL);
