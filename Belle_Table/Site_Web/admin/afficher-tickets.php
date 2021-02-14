@@ -41,9 +41,12 @@
           $newReponse = "INSERT INTO reponse_contact(fk_contact, nom, prenom, message, date_rep) VALUES ($id, '$nom', '$prenom', '$message', now())" ;
           $queryRep = mysqli_query($bdd, $newReponse);
           $sendRep = true;
-
-          $newEtat = "UPDATE contact SET etat = 'Repondu' WHERE id = $id";
-          $newEtat = mysqli_query($bdd, $newEtat);
+          
+          if($ligne['etat']=="Nouveau")
+          {
+            $newEtat = "UPDATE contact SET etat = 'Repondu' WHERE id = $id";
+            $newEtat = mysqli_query($bdd, $newEtat);
+          }
 
           $headers = "From: service@belletable.eu \r\n";
           $headers .= "Reply-To: service@belletable.eu \n";
@@ -111,7 +114,6 @@
               <?php echo @$dateRepfr; ?>
             </div>
           <?php endwhile; ?>
-
         </div>
         <br>
         <form method="POST" style="padding: 1.25rem; background-color: white; border: 2px solid #F2F2F2; border-radius: 6px;">
@@ -132,8 +134,6 @@
       <?php endif; ?>
 
       <br><br>
-      <h2>Lorem Ipsum Dolor</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
       <?php include("include/footer.php"); ?>
     </div>
