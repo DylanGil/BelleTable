@@ -13,7 +13,65 @@
       require_once('include/en-tete.php'); 
 
     ?>
-    
+     <?php 
+      @$email = $_SESSION['email'];
+      @$fk = $_SESSION['id'];
+      @$chat = mysqli_escape_string($bdd, htmlspecialchars($_POST['chat']));
+      @$tache = mysqli_escape_string($bdd, htmlspecialchars($_POST['tache']));
+
+      if(isset($_POST['send'])) 
+        {
+          $requete = "INSERT INTO message(fk_utilisateur, message) VALUES ( '$fk', '$chat')";
+          mysqli_query($bdd, $requete);
+        } 
+
+      $afficherMessage = "SELECT id_message, prenom, message FROM login, message WHERE fk_utilisateur = id ORDER BY id_message ASC" ;
+      $resAfficherMessage = mysqli_query($bdd, $afficherMessage);
+
+      #######################TO DO LIST################################################
+
+      if(isset($_POST['send-tdl'])) 
+        {
+          $requete = "INSERT INTO to_do_list(fk_utilisateur, tache, realiser) VALUES ( '$fk', '$tache', 0)";
+          mysqli_query($bdd, $requete);
+        } 
+
+      $afficherTache = "SELECT id_tdl, prenom, tache, realiser FROM login, to_do_list WHERE fk_utilisateur = id ORDER BY realiser ASC" ;
+      $resAfficherTache = mysqli_query($bdd, $afficherTache);
+
+      if(isset($_GET['realiser']))
+      {
+        @$id = mysqli_real_escape_string($bdd, htmlspecialchars($_GET['id']));
+
+        $url = "index.php";
+
+        if($_GET['realiser']=="supprimer")
+        {
+          $modifStatus = "DELETE FROM to_do_list WHERE id_tdl = $id ";
+          mysqli_query($bdd, $modifStatus);
+          header('location:'.$url);
+        }
+
+        if($_GET['realiser']=="a faire")
+        {
+          $modifStatus = "UPDATE to_do_list SET realiser = 0 WHERE id_tdl = $id ";
+          mysqli_query($bdd, $modifStatus);
+          header('location:'.$url);
+        }
+        if($_GET['realiser']=="en cours")
+        {
+          $modifStatus = "UPDATE to_do_list SET realiser = 1 WHERE id_tdl = $id ";
+          mysqli_query($bdd, $modifStatus);
+          header('location:'.$url);
+        }
+        if($_GET['realiser']=="fini")
+        {
+          $modifStatus = "UPDATE to_do_list SET realiser = 2 WHERE id_tdl = $id ";
+          mysqli_query($bdd, $modifStatus);
+          header('location:'.$url);
+        }
+      }
+    ?>
 
 </head>
 
@@ -96,81 +154,8 @@
                 </div>  
             </section>
             <br>
-            <?php 
-              @$email = $_SESSION['email'];
-              @$chat = mysqli_escape_string($bdd, htmlspecialchars($_POST['chat']));
-              @$tache = mysqli_escape_string($bdd, htmlspecialchars($_POST['tache']));
 
-              if(isset($_POST['send'])) 
-                {
-                  $requete = "INSERT INTO message(fk_utilisateur, message) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$chat')";
-                  mysqli_query($bdd, $requete);
-                } 
-
-              $afficherMessage = "SELECT id_message, prenom, message FROM login, message WHERE fk_utilisateur = id ORDER BY id_message ASC" ;
-              $resAfficherMessage = mysqli_query($bdd, $afficherMessage);
-
-              #######################TO DO LIST################################################
-
-              if(isset($_POST['send-tdl'])) 
-                {
-                  $requete = "INSERT INTO to_do_list(fk_utilisateur, tache, realiser) VALUES ( (SELECT id FROM login WHERE email = '$email'), '$tache', 0)";
-                  mysqli_query($bdd, $requete);
-                } 
-
-              $afficherTache = "SELECT id_tdl, prenom, tache, realiser FROM login, to_do_list WHERE fk_utilisateur = id ORDER BY realiser ASC" ;
-              $resAfficherTache = mysqli_query($bdd, $afficherTache);
-              if(isset($_GET['realiser']))
-              {
-                $id = $_GET['id'];
-
-                $url = "index.php";
-
-                if($_GET['realiser']=="supprimer")
-                {
-                  $modifStatus = "DELETE FROM to_do_list WHERE id_tdl = $id ";
-                  mysqli_query($bdd, $modifStatus);
-                  ?> 
-                    <script language="Javascript">
-                      document.location.replace("<?php echo $url ?>"); 
-                    </script> 
-                  <?php
-                }
-
-                if($_GET['realiser']=="a faire")
-                {
-                  $modifStatus = "UPDATE to_do_list SET realiser = 0 WHERE id_tdl = $id ";
-                  mysqli_query($bdd, $modifStatus);
-                  ?> 
-                    <script language="Javascript">
-                      document.location.replace("<?php echo $url ?>"); 
-                    </script> 
-                  <?php
-                }
-                if($_GET['realiser']=="en cours")
-                {
-                  $modifStatus = "UPDATE to_do_list SET realiser = 1 WHERE id_tdl = $id ";
-                  mysqli_query($bdd, $modifStatus);
-                  ?> 
-                    <script language="Javascript">
-                      document.location.replace("<?php echo $url ?>"); 
-                    </script> 
-                  <?php
-                }
-                if($_GET['realiser']=="fini")
-                {
-                  $modifStatus = "UPDATE to_do_list SET realiser = 2 WHERE id_tdl = $id ";
-                  mysqli_query($bdd, $modifStatus);
-                  ?> 
-                    <script language="Javascript">
-                      document.location.replace("<?php echo $url ?>"); 
-                    </script> 
-                  <?php
-                }
-              }
-            ?>
-
-            <h2>ChatBox - Commentaires  </h2>
+            <h2>ChatBox </h2>
             <div class="Chat">
               <div class="chat-w-header">
                 <div class="header-chat">
@@ -206,14 +191,15 @@
                   </div>    
                 <form method="POST" action="">
                     <div class="input-group-append">
-                        <input type="texte" name="chat" class="champ form-control" >
+                        <input type="texte" name="chat" class="champ form-control">
                         <input type="submit" name="send" class="submit-chat">
                     </div>
                 </form>
               </div>
             </div>
 
-            <br><br>
+            <br>
+            <h2>ChatBox </h2>
             <div class="to-div-list">
               <div class="to-do-list">
                 <table class="tdl" border="1">
@@ -268,7 +254,7 @@
                 </table>
                 <form method="POST" action="">
                   <div class="input-group-append">
-                      <input style="border-radius: inherit;" type="texte" name="tache" class="champ form-control" >
+                      <input style="border-radius: inherit;" type="texte" name="tache" class="champ form-control">
                       <input type="submit" name="send-tdl" class="submit-chat" value="rajouter">
                   </div>
                 </form>
