@@ -17,7 +17,7 @@
 
 		 	@$id = mysqli_real_escape_string($bdd, htmlspecialchars($_SESSION['id']));
 
-		 	$query = mysqli_query($bdd, "SELECT * FROM panier WHERE iduser = '$id'");
+		 	$query = mysqli_query($bdd, "SELECT * FROM `panier` INNER JOIN produit INNER JOIN login on panier.idproduit = produit.idproduit AND iduser = id WHERE iduser = '$id'");
 
 		 	$query2 = mysqli_query($bdd, "SELECT * FROM login WHERE id = '$id' AND noteqcm IS NOT NULL"); 
 

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 17 jan. 2021 à 11:36
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Généré le : jeu. 11 mars 2021 à 19:07
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `belle_table`
+-- Base de données : `belle_table`
 --
 
 -- --------------------------------------------------------
@@ -47,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
 
 INSERT INTO `contact` (`id`, `nom`, `prenom`, `email`, `sujet`, `message`, `date_creation`, `etat`) VALUES
 (1, 'Dupont', 'Jean', 'jeandupont@gmail.com', 'Cherche emploie', 'Bonjour je suis a la recherche d\'un emploie pour une alternance pour la rentree 2021-2022', '2020-10-20 14:41:34', 'Repondu'),
-(2, 'Rodriguez', 'Michel', 'michelrodiguez@gmail.com', 'Remboursement', 'Bonjour je souhaiterais obtenir un remboursement ou un avoir car je ne suis pas satisfait de mes produits !', '2020-10-22 23:14:21', 'Nouveau');
+(2, 'Rodriguez', 'Michel', 'michelrodiguez@gmail.com', 'Remboursement', 'Bonjour je souhaiterais obtenir un remboursement ou un avoir car je ne suis pas satisfait de mes produits !', '2020-10-22 23:14:21', 'Repondu');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `emploi` (
   `description` varchar(255) CHARACTER SET utf8 NOT NULL,
   `note` int(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `emploi`
@@ -163,8 +162,8 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `titre` text NOT NULL,
   `old_prix` int(11) DEFAULT NULL,
   `prix` float NOT NULL,
-  `description` text DEFAULT NULL,
-  `image` text DEFAULT NULL,
+  `description` text,
+  `image` text,
   UNIQUE KEY `idannonce` (`idproduit`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
@@ -413,14 +412,15 @@ CREATE TABLE IF NOT EXISTS `reponse_contact` (
   `message` text NOT NULL,
   `date_rep` datetime NOT NULL,
   PRIMARY KEY (`id_rep`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponse_contact`
 --
 
 INSERT INTO `reponse_contact` (`id_rep`, `fk_contact`, `nom`, `prenom`, `message`, `date_rep`) VALUES
-(1, 1, 'Partouche', 'Nathan', 'bonjour, nous somme dÃ©soler mais nous ne recrutons pas d\'alternant.\r\n\r\nCordialement', '2020-10-22 23:06:38');
+(1, 1, 'Partouche', 'Nathan', 'bonjour, nous somme dÃ©soler mais nous ne recrutons pas d\'alternant.\r\n\r\nCordialement', '2020-10-22 23:06:38'),
+(2, 2, 'Partouche', 'Nathan', 'Bonjour, aucun remboursement n\'est disponible sur notre site.\r\n\r\nCordialement,\r\nNathan PARTOUCHE', '2021-02-09 17:13:52');
 
 -- --------------------------------------------------------
 
@@ -432,7 +432,7 @@ DROP TABLE IF EXISTS `resultat`;
 CREATE TABLE IF NOT EXISTS `resultat` (
   `idqcm` int(50) NOT NULL AUTO_INCREMENT,
   `login` varchar(200) NOT NULL,
-  `date` datetime DEFAULT current_timestamp(),
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
   `note` int(50) NOT NULL,
   `niveau` int(50) NOT NULL,
   PRIMARY KEY (`idqcm`)
