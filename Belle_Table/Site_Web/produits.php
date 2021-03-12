@@ -79,30 +79,36 @@
 					  });
 					</script>
 					<div class="product-card">
-						<div class="product-tumb">
-							<img src="produits/<?php echo $produit['image']; ?>" alt="">
-						</div>
-						<div class="product-details">
-							<h4><a href="afficher-produit.php?p=<?php echo $produit['idproduit']; ?>"><?php echo $produit['titre']; ?></a></h4>
-							<p><?php echo $produit['description']; ?></p>
-							<div class="product-bottom-details">
-								<div class="product-price">
-									<?php if(isset($produit['old_prix'])): ?>
-										<small><?php echo $produit['old_prix']; ?>€</small>
-									<?php endif; ?>
-									<?php echo $produit['prix']; ?>€
-								</div>
-								<div class="product-links">
-									<?php $idproduit = mysqli_real_escape_string($bdd, htmlspecialchars($produit['idproduit'])); ?>
-									<i class="fa fa-shopping-cart logo-panier<?php echo $i; ?>"></i>
-								</div>
+						<a href="afficher-produit.php?p=<?php echo $produit['idproduit']; ?>">
+							<div class="product-tumb">
+								<img src="produits/<?php echo $produit['image']; ?>" alt="">
 							</div>
-							<form method="POST" action="addPanier.php?idProduit=<?php echo $idproduit ?>" class="hide-panier<?php echo $i; ?>">
-								<label for="quantite" style="color: white;">Quantité</label>
-								<input type="number" min="1" value="1" id="quantite" name="quantite" class="quantite">
-								<input type="submit" name="submit" value="Ajouter au panier" style="background-color: white; color: orange; border: 2px solid white;">
-							</form>
-						</div>
+							<div class="product-details">
+								<h4><a href="afficher-produit.php?p=<?php echo $produit['idproduit']; ?>"><?php echo $produit['titre']; ?></a></h4>
+								<p><?php echo $produit['description']; ?></p>
+								<div class="product-bottom-details">
+									<div class="product-price">
+										<?php if(isset($produit['old_prix'])): ?>
+											<small><?php echo $produit['old_prix']; ?>€</small>
+										<?php endif; ?>
+										<?php echo $produit['prix']; ?>€
+									</div>
+									<div class="product-links">
+										<?php $idproduit = mysqli_real_escape_string($bdd, htmlspecialchars($produit['idproduit'])); ?>
+										<i class="fa fa-shopping-cart logo-panier<?php echo $i; ?>"></i>
+									</div>
+								</div>
+								<form method="POST" action="addPanier.php?idProduit=<?php echo $idproduit ?>" class="hide-panier<?php echo $i; ?>">
+									<?php if(isset($_SESSION['email'])): ?>
+										<label for="quantite" style="color: white;">Quantité</label>
+										<input type="number" min="1" value="1" id="quantite" name="quantite" class="quantite">
+										<input type="submit" name="submit" value="Ajouter au panier" style="background-color: white; color: orange; border: 2px solid white;">
+									<?php else: ?>
+										<a href="inscription.php" style="color: white;">Connecter vous afin de pouvoir ajouter du contenue a votre panier</a>
+									<?php endif; ?>
+								</form>
+							</div>
+						</a>
 					</div>
 					<?php $i++; ?>
 				<?php endwhile; ?>

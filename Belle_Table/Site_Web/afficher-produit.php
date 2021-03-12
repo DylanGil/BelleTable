@@ -19,6 +19,9 @@
 			$produit = mysqli_fetch_array($req);
 		?>
 	</head>
+	<style type="text/css">
+		.liste-quantite {background: #ff7a00; display: flex; flex-direction: column; border-radius: 12px; margin: inherit; padding: 10px; color: white; width: 70%;}
+	</style>
 
 	<body>
 		<?php include("include/menu.php"); ?>
@@ -58,14 +61,17 @@
 	              <div style="background-color: #FAFAFA;" align="center">
 	                <span style="font-size: 24px; font-weight: bold;"><?php echo $produit['prix']; ?>€ </span>
 	              </div>
-	              
 	              <div align="center">
-					<form method="POST" action="addPanier.php?idProduit=<?php echo $id; ?>" style="margin: inherit;">
-						<label for="quantite">Quantité :</label><br>
-						<input type="number" class="quantite" id="quantite" title="veuillez sélectionner une valeur supérieur ou égale à 1" name="quantite" value="1"><br>
-						<label for="submit" class="button-4 btn-edit">Ajouter au panier <i class="fa fa-shopping-cart logo-panier"></i></label>
-						<input type="submit" id="submit" hidden="" >
-					</form>	              	
+	             	<?php if(isset($_SESSION['id'])): ?>
+						<form method="POST" action="addPanier.php?idProduit=<?php echo $id; ?>" style="margin: inherit;">
+							<label for="quantite">Quantité :</label><br>
+							<input type="number" class="quantite" id="quantite" title="veuillez sélectionner une valeur supérieur ou égale à 1" name="quantite" value="1"><br>
+							<label for="submit" class="button-4 btn-edit">Ajouter au panier <i class="fa fa-shopping-cart logo-panier"></i></label>
+							<input type="submit" id="submit" hidden="" >
+						</form>	    
+					<?php else: ?>
+						<span class="liste-quantite">Connecter vous afin de pouvoir ajouter du contenue a votre panier</span>
+					<?php endif; ?>  	
 	              </div>
 	                
 	            </div>
