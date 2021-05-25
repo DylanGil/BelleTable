@@ -17,4 +17,4 @@
 	.ulsm li a {color: white;}
 </style>
 
-<?php $bdd = mysqli_connect ("78.199.84.127:50241", "root", "aze!123","belletable_web_nathan"); ?>
+<?php $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
