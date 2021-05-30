@@ -28,8 +28,7 @@
 				$mdp= $_POST["mdp"];
 				$email= $_POST["email"];
 				$tel= $_POST["tel"];
-				$id = mysqli_connect ("localhost", "root", "","belle_table"); // la ou il se connecte puis le user puis le mot de passe puis la BDD
-				$req = "select * from login where email = '$email'";
+				$req = "SELECT * FROM login WHERE email = '$email'";
 				$res = mysqli_query($id,$req);
 
 				if (mysqli_num_rows($res) > 0)
@@ -38,7 +37,7 @@
 					}
 				else
 					{
-						$req2 = "insert into login (nom, prenom, telephone, mdp, email, admin) values ('$nom','$prenom','$tel','$mdp', '$email', '0')";
+						$req2 = "INSERT INTO login (nom, prenom, telephone, mdp, email, admin) VALUES ('$nom','$prenom','$tel','$mdp', '$email', '0')";
 						$res = mysqli_query($id, $req2);
 						$accountCreate = true ;
 						header("location:Inscription.php?inscrit=1");

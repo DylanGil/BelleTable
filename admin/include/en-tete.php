@@ -1,4 +1,12 @@
- <meta charset="utf-8">
+<?php include('../include/bdd.php'); ?>
+<?php session_start(); ?>
+<?php 
+    if($_SESSION["admin"]!=1)
+    {
+        header('location:../');
+    }
+?>
+<meta charset="utf-8">
 <!-- pour avoir un site responsive -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- pour mettre des icones  -->
@@ -48,7 +56,5 @@
         }); 
     });
 </script>
-
-<?php @session_start(); $bdd = mysqli_connect ("localhost", "root", "","belle_table"); ?>
 
 <style type="text/css">.desactive {background-color: inherit;}</style> <!-- permet de enlever la couleur de la page active lorsqu'on active un sous menu !-->

@@ -27,7 +27,7 @@
             </nav>
               
             <div align="center">
-              <div class="info-box box4" style="width: 150px; height: 110px;">
+              <div class="info-box box2" style="width: 150px; height: 110px;">
                 <div class="text-box">
                   <h3><?php $countUtilisateur = "SELECT count(prenom) FROM login"; $reqNbUtilisateur = mysqli_query($bdd,$countUtilisateur); $nbUser = mysqli_fetch_assoc($reqNbUtilisateur); echo $nbUser['count(prenom)']; ?> <i class="fas fa-users"></i></h3>
                   <p>Utilisateurs</p>
@@ -249,7 +249,7 @@
 
             <?php if(@$filtre): ?>
               <center>
-                <a href="http://liste/cerfal/1erPPE/BelleTable/Belle_Table/Site_Web/admin/liste-membre.php" class="btn btn-success">Retirez les filtre</a>
+                <a href="liste-membre.php" class="btn btn-success">Retirez les filtre</a>
               </center>
             <?php endif; ?>
 

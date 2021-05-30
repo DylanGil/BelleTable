@@ -1,6 +1,6 @@
 <header>
 	<div class="wrapper Header" >
-		<h1>Belle Table<span class="orange">.</span></h1>
+		<h1>BelleTable<span class="orange">.</span></h1>
 		<nav>
 			<ul>
 				<li><a href="index.php">Accueil</a></li>

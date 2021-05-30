@@ -38,7 +38,7 @@
 					
 					if ($verif == 0) 
 					{
-						echo "Question ".$i.": mauvaise réponse.  La bonne reponse était : ".$ligne["reponse"]."";
+						echo "Question ".$i.": mauvaise réponse.  La bonne reponse était : ".utf8_encode($ligne["reponse"])."";
 						$nbq++;
 					} 
 					else if ($verif == 1) 
@@ -46,7 +46,7 @@
 						if ($niveau == 1) {
 						$total++; // si le niveau était en expert, une bonne réponse, vaut 2 points
 						}
-						echo "Question ".$i.": bonne réponse (".$ligne["reponse"].")";
+						echo "Question ".$i.": bonne réponse (".utf8_encode($ligne["reponse"]).")";
 						$nbq++;
 						$total++;
 					}
@@ -56,10 +56,11 @@
 			<br><br><br> 
 			<?php
 				echo "Votre note : ".$total. " / 20";
-				// $req2 = "insert into resultat (login, note, niveau) values('$login', '$total', '$niveau')";
-				// $res2 = mysqli_query($id, $req2);	
+				$req2 = "insert into resultat (login, note, niveau) values('$login', '$total', '$niveau')";
+				$res2 = mysqli_query($bdd, $req2);	
 				$req3 = "UPDATE login SET noteqcm = '$total' where email = '$login'";
 				$res3 = mysqli_query($bdd, $req3);	
+				$_SESSION['noteqcm'] = $total;
 				//Une fois le QCM fini, sa va modifier la noteqcm du user
 			?>
 			<br><br><br>

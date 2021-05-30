@@ -4,7 +4,7 @@
 		<p>Adresse : 20, rue de la gare 75100 Paris.<br> N° de téléphone : 01 75 02 77 14. <br> Adresse Mail: azerty@gmail.com</p> 
 		<br><br>
 
-		<h1>Belle Table<span class="orange">.</span></h1>
+		<h1>BelleTable<span class="orange">.</span></h1>
 		<div class="copyright">Copyright © Tous droits réservés.</div>
 	</div>
 </section>

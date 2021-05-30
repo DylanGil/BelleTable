@@ -104,7 +104,7 @@
                         <p>Articles</p>
                       </div>
                       <div class="info-box-footer">
-                        <a href="articles.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="produits.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -147,7 +147,7 @@
                       <div class="icon-box">   
                       </div>
                       <div class="info-box-footer">
-                        <a href="contact.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="tickets.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>

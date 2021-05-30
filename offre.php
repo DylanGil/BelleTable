@@ -22,7 +22,7 @@
 			<?php
 			if (!isset($_SESSION['email']))
 			{
-				echo "connecte toi frere";
+				echo "Merci de vous connecter afin de pouvoir accéder au offres d'emploie";
 			}
 			else
 			{
@@ -40,11 +40,8 @@
 						<input type="radio" name="niveau" id="debutant" value="0"><br>
 						<label for="expert">Expert (2 points)</label>
 						<input type="radio" name="niveau" value="1" id="expert" checked><br><br>
-						<input type="submit" value="Choisir" name="boutlvl">
+						<input type="submit" class="button-1" style="border: none;" value="Choisir" name="boutlvl">
 					</form>	
-					<?php if ($_SESSION['admin']==1): ?> 	
-					<a href="emploi.php" class="button-1">Nos emplois</a> <!--A ENLEVER C POUR DEV, sa permet d'acceder directement aux emplois-->
-					<?php endif; ?>
 					<?php
 				} 	?>
 
@@ -82,7 +79,7 @@
 							} 	?>
 							<?php 
 						} 	?>
-						<input type="submit" value="Envoyer"> <br><br><br>
+						<input type="submit" value="Envoyer" class="button-1" style="border: none;"> <br><br><br>
 						<?php 
 					} 	?>
 				</form>

@@ -10,16 +10,15 @@
     background: #007BFF;}</style> 
 
     <?php  
-      $req = "SELECT panier.idproduit, iduser, email, SUM(prix) FROM `panier`, produit, login WHERE panier.idproduit = `produit`.`idproduit` AND iduser = id GROUP BY iduser " ;
+      $req = "SELECT panier.idproduit, iduser, email, SUM(prix) FROM panier INNER JOIN produit INNER JOIN login ON panier.idproduit = `produit`.`idproduit` AND iduser = id GROUP BY iduser " ;
       $requete = mysqli_query($bdd,$req);
       $i = 0;
       
       if (isset($_POST["monBoutonTri"]))
-        {
-          $critere = $_POST["critere"];   
+        { 
           $search =$_POST["search"];
           $tri =$_POST["tri"];
-          $req = "SELECT * FROM panier where $critere like '%$search%' order by $critere $tri";
+          $req = "SELECT panier.idproduit, iduser, email, SUM(prix) FROM panier INNER JOIN produit INNER JOIN login ON panier.idproduit = `produit`.`idproduit` AND iduser = id WHERE email LIKE '%$search%' ORDER BY email $tri";
           $requete = mysqli_query($bdd, $req); 
           $filtre = true ;
         }
@@ -61,11 +60,7 @@
 
           <center>
             <h2> <!-- modifie l'en tête en fonction de l'action faite !-->
-              <?php if(@$filtre): ?>
-                Recherche <?php if($critere=="email"): ?> de l'<?php else: ?> du <?php endif; ?><?php echo $critere ; ?>
-              <?php else: ?>
                 Liste des paniers 
-              <?php endif; ?>
             </h2>
           </center>
 
@@ -78,12 +73,7 @@
 
                   <input type="text" class="form-control" style="width: 450px;" placeholder="Rechercher" name="search">
                   <br>
-                  <label for="critere"> Trier par : </label>
-                  <select name="critere" class="custom-select" id="critere" style="width: 130px;">
-                    <option value="email"> Email </option>
-                    <option value="?"> Nombre d'article </option>
-                    <option value="prix"> Prix </option>
-                  </select>
+                  <label for="critere"> Trier par ordre : </label>
                   <select name="tri" class="custom-select" style="width: 140px;">
                     <option value="ASC">Croissant</option>
                     <option value="DESC">Decroissant</option>
@@ -136,7 +126,7 @@
 
           <?php if(@$filtre): ?>
             <center>
-              <a href="contact.php" class="btn btn-success">Retirez les filtre</a>
+              <a href="liste-panier.php" class="btn btn-success">Retirez les filtre</a>
             </center>
           <?php endif; ?>
 

@@ -23,10 +23,10 @@
 		<p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site <a href="http://belletable.eu/">belletable.eu</a> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
 		<p>
 			<strong>Propriétaire</strong> : Belle Table – SARL  732 829 320 00074 – 20, rue de la gare 75100 Paris<br />
-			<strong>Créateur</strong>  : <a href="dylans.com">Dylan's</a><br />
+			<strong>Créateur</strong>  : <a href="dylans.com">Dylan's & Nathan</a><br />
 			<strong>Responsable publication</strong> : Belle Table – belletable@gmail.com<br />
 			Le responsable publication est une personne physique ou une personne morale.<br />
-			<strong>Webmaster</strong> : Dylans – dylans.flame.libra@gmail.com<br />
+			<strong>Webmaster</strong> : Dylans – contact@dylansandnathan.fr<br />
 			<strong>Hébergeur</strong> : Belle Table – 75100<br />
 			Crédits : <br />
 			Le modèle de mentions légales est offert par Subdelirium.com <a target="_blank" href="https://www.subdelirium.com/generateur-de-mentions-legales/" alt="Modèle de mentions légales">Modèle de mentions légales</a>
