@@ -1,5 +1,5 @@
 <?php 
-	if($_SERVER['HTTP_HOST']=="localhost")
+	if($_SERVER['HTTP_HOST']=="localhost" || $_SERVER['HTTP_HOST']=="liste" )
 	{
 		$bdd = mysqli_connect ("localhost", "root", "","belle_table");
 	}
