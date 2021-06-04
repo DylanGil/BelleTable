@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Panel Admin V.3</title>   
+    <title>Panel Admin</title>   
 
     <style type="text/css">.dashboard {background-color: #007BFF;}</style> <!-- met la page ou on est en bleu -->
     
@@ -97,20 +97,20 @@
                 <h2>Statistique</h2>
                 <div class="row">
 
-                  <div class="col-lg-3 col-6">
-                    <div class="info-box box1" align="center">
-                      <div class="text-box">
+                  <div class="col-lg-3 col-6" >
+                    <div class="info-box box1" align="center" style="height: 131.517px;">
+                      <div class="text-box" >
                         <h3> <?php $query = mysqli_query($bdd, "SELECT count(*) FROM produit"); $nbProduit = mysqli_fetch_assoc($query); print_r($nbProduit['count(*)']); ?> <i class="fas fa-box"></i></h3>
                         <p>Articles</p>
                       </div>
                       <div class="info-box-footer">
-                        <a href="produits.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                       
                       </div>
                     </div>
                   </div>
     
                   <div class="col-lg-3 col-6" align="center">
-                    <div class="info-box box2">
+                    <div class="info-box box2" style="height: 131.517px;">
                       <div class="text-box">
                         <h3><?php $countUtilisateur = "SELECT count(prenom) FROM login"; $reqNbUtilisateur = mysqli_query($bdd,$countUtilisateur); $nbUser = mysqli_fetch_assoc($reqNbUtilisateur); echo $nbUser['count(prenom)']; ?> <i class="fas fa-users"></i></h3>
                         <p>Utilisateurs</p>
@@ -118,13 +118,13 @@
                       <div class="icon-box">   
                       </div>
                       <div class="info-box-footer">
-                        <a href="liste-membre.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                       </div>
                     </div>
                   </div>
          
                   <div class="col-lg-3 col-6" align="center">
-                    <div class="info-box box3">
+                    <div class="info-box box3" style="height: 131.517px;">
                       <div class="text-box">
                         <h3><?php $query = mysqli_query($bdd, "SELECT count(*) FROM panier"); $nbPanier = mysqli_fetch_assoc($query); print_r($nbPanier['count(*)']); ?><i class="fas fa-shopping-basket"></i></h3>
                         <p>Paniers en cours</p>
@@ -133,13 +133,13 @@
                         
                       </div>
                       <div class="info-box-footer">
-                        <a href="liste-panier.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                        
                       </div>
                     </div>
                   </div>
        
                   <div class="col-lg-3 col-6" align="center">
-                    <div class="info-box box4">
+                    <div class="info-box box4" style="height: 131.517px;">
                       <div class="text-box">
                         <h3><?php $countUtilisateur = "SELECT count(id) FROM contact WHERE etat = 'Nouveau'"; $reqNbUtilisateur = mysqli_query($bdd,$countUtilisateur); $nbUser = mysqli_fetch_assoc($reqNbUtilisateur); echo $nbUser['count(id)']; ?> <i class="fas fa-ticket-alt"></i></h3>
                         <p>Nouveau ticket</p>
@@ -147,7 +147,7 @@
                       <div class="icon-box">   
                       </div>
                       <div class="info-box-footer">
-                        <a href="tickets.php">Plus d'info <i class="fas fa-arrow-circle-right"></i></a>
+                       
                       </div>
                     </div>
                   </div>
@@ -221,10 +221,10 @@
                     </th>
                   </tr>
                   <tr align="center">
-                    <th>Changer le status</th>
+                    <th>Changer le statut</th>
                     <th>crée par</th>
                     <th>Tâches</th>
-                    <th>Status</th>
+                    <th>Statut</th>
                   </tr>
 
                   <?php while($tache = mysqli_fetch_assoc($resAfficherTache)): ?> 

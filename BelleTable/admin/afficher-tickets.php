@@ -3,7 +3,7 @@
   <html>
 
   <head>
-      <title>Panel Admin V.3</title>   
+      <title>Panel Admin</title>   
 
       <style type="text/css">.contact {background-color: #007BFF;} </style> <!-- met la page ou on est en bleu -->
 

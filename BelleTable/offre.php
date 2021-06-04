@@ -22,7 +22,7 @@
 			<?php
 			if (!isset($_SESSION['email']))
 			{
-				echo "Merci de vous connecter afin de pouvoir accéder au offres d'emploie";
+				echo "Merci de vous connecter afin de pouvoir accéder aux offres d'emploi";
 			}
 			else
 			{

@@ -17,7 +17,7 @@
 	<section id="main-image">
 		<div class="wrapper" >
 			<h2><strong>Les arts de la table</strong><br>Tout pour vos réceptions</h2>
-			<a href="offre.php" class="button-1">Nos offres d'emplois</a>
+			<a href="produits.php" class="button-1">Nos produits</a>
 		</div>
 	</section>	
 	

@@ -6,8 +6,14 @@
 
     <?php require_once("include/en-tete.php"); ?>
 
-    <style type="text/css">.liste-panier {background-color: #fff; color: #343A40;} .menuclick{color: #fff;
-    background: #007BFF;}</style> 
+    <style type="text/css">
+      .liste-panier {background-color: /* #fff */ #007BFF; color: /* #343A40 */ #fff;} 
+      /* .menuclick
+      {
+        color: #fff;
+        background: #007BFF;
+      } */
+    </style> 
 
     <?php  
       $req = "SELECT panier.idproduit, iduser, email, SUM(prix) FROM panier INNER JOIN produit INNER JOIN login ON panier.idproduit = `produit`.`idproduit` AND iduser = id GROUP BY iduser " ;

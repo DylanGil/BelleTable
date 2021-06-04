@@ -82,7 +82,7 @@
 								</div>
 							</div>
 							<div>
-								<a href="parametre.php" class="settings-btn"><i class="fas fa-pencil-alt"></i> Modifier mes information personnels</a>
+								<a href="parametre.php" class="settings-btn"><i class="fas fa-pencil-alt"></i> Modifier mes informations personnelles</a>
 							</div>
 
 							<div class="box box-commande">

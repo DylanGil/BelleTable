@@ -26,13 +26,9 @@
                     <a href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 </li>
 
-                <li class="menuclick dropright">
+<!--            <li class="menuclick dropright">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fad fa-analytics"></i> Statistique </a>
                     <ul class="collapse list-unstyled sous-menu" id="homeSubmenu">
-                        <!-- <li>
-                            <a class="articles-vendu" href="articles-vendu.php"><i class="far fa-dollar-sign"></i> Articles vendu</a>
-                        </li> -->
-
                         <li>
                             <a class="liste-panier" href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
                         </li>
@@ -42,13 +38,16 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
 
+                <li class="liste-panier">
+                    <a href="liste-panier.php"><i class="far fa-shopping-basket"></i> Paniers en cours</a>
+                </li>
                 <li class="produits">
                     <a href="produits.php"><i class="fas fa-edit"></i> Gérer les produits </a>
                 </li>
                 <li class="offre">
-                    <a href="offre.php"><i class="fas fa-plus"></i> Ajouter un offre d'emploie </a>
+                    <a href="offre.php"><i class="fas fa-plus"></i> Ajouter une offre d'emploi </a>
                 </li>
                 <li class="tickets">
                     <a href="tickets.php"><i class="fas fa-ticket-alt"></i> Tickets <span class="badge badge-danger"><?php $query = mysqli_query($bdd, "SELECT count(*) FROM contact WHERE etat = 'Nouveau'"); $newRep = mysqli_fetch_assoc($query); print_r($newRep['count(*)']); ?></span> </a>

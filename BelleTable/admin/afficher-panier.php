@@ -3,7 +3,7 @@
   <html>
 
   <head>
-      <title>Panel Admin V.3</title>   
+      <title>Panel Admin</title>   
       
       <?php require_once("include/en-tete.php"); ?>
       

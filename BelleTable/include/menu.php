@@ -5,9 +5,9 @@
 			<ul>
 				<li><a href="index.php">Accueil</a></li>
 				<li><a href="info.php">Nous découvrir</a></li>
-				<li><a href="offre.php">Offres d'emplois</a></li>
+				<li><a href="offre.php">Offres d'emploi</a></li>
 				<li><a href="produits.php">Nos produits</a></li>
-				<li><a href="infolegal.php">Infos legal</a></li>
+				<li><a href="infolegal.php">Infos légales</a></li>
 				<?php
 				if (!isset($_SESSION['email']))
 				{
