@@ -8,5 +8,8 @@ document5_contenuesql.pdf -> images de la base de données
 
 Pour récupérer la base de données en local aller dans le dossier ../BDD et récupéré le dossier BelleTableWeb.sql
 
-Pour tester le site web en ligne rendez vous sur : https://pnathan.dev/projets/BelleTable/
+Pour tester le site web en ligne rendez vous sur : 
+https://pnathan.dev/projets/BelleTable/
+https://dga-developpeur.fr/belletable/
+
 
