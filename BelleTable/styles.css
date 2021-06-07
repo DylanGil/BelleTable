@@ -382,8 +382,7 @@ textarea {padding: 10px;
 @media screen and (max-device-width: 800px) 
 {
 
-.settings-box 
-
+	.settings-box 
     { 
         border : 1px solid gray; 
         width: 80%;

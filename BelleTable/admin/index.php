@@ -100,7 +100,7 @@
                   <div class="col-lg-3 col-6" >
                     <div class="info-box box1" align="center" style="height: 131.517px;">
                       <div class="text-box" >
-                        <h3> <?php $query = mysqli_query($bdd, "SELECT count(*) FROM produit"); $nbProduit = mysqli_fetch_assoc($query); print_r($nbProduit['count(*)']); ?> <i class="fas fa-box"></i></h3>
+                        <h3> <?php $query = mysqli_query($bdd, "SELECT count(*) FROM produit"); $nbProduit = mysqli_fetch_assoc($query); echo $nbProduit['count(*)']; ?> <i class="fas fa-box"></i></h3>
                         <p>Articles</p>
                       </div>
                       <div class="info-box-footer">
@@ -126,7 +126,7 @@
                   <div class="col-lg-3 col-6" align="center">
                     <div class="info-box box3" style="height: 131.517px;">
                       <div class="text-box">
-                        <h3><?php $query = mysqli_query($bdd, "SELECT count(*) FROM panier"); $nbPanier = mysqli_fetch_assoc($query); print_r($nbPanier['count(*)']); ?><i class="fas fa-shopping-basket"></i></h3>
+                        <h3><?php $query = mysqli_query($bdd, "SELECT count(*) FROM panier"); $nbPanier = mysqli_fetch_assoc($query); echo $nbPanier['count(*)']; ?><i class="fas fa-shopping-basket"></i></h3>
                         <p>Paniers en cours</p>
                       </div>
                       <div class="icon-box">

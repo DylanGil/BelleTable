@@ -7,7 +7,11 @@
       
       <?php require_once("include/en-tete.php"); ?>
       
-      <style type="text/css">.liste-panier {background-color: #fff; color: #343A40;} .menuclick{color: #fff; background: #007BFF;}</style> 
+      <style type="text/css">
+       .liste-panier {background-color: #007BFF; color: #FFF;} 
+       /* .liste-panier {background-color: #fff; color: #343A40;} */
+        /*.menuclick{color: #fff; background: #007BFF;}*/
+      </style> 
 
       <?php 
         
