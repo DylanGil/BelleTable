@@ -3,7 +3,8 @@ Bienvenue sur la documentation de BelleTable Desktop vous retrouverez dans ce do
 document1_Prestataire.pdf -> information sur le prestataire
 document2_Client.pdf -> information sur le client
 document3_devis.pdf -> le devis
-document4_contenuesql.pdf -> images de la base de données
+document4_docutilisateur -> pdf expliquant le fonctionnement du site
+document5_contenuesql.pdf -> images de la base de données
 
 Pour récupérer la base de données en local aller dans le dossier ../BDD et récupéré le dossier BelleTableWeb.sql
 
