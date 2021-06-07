@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 04 juin 2021 à 07:55
+-- Généré le : lun. 07 juin 2021 à 16:34
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -82,6 +82,7 @@ INSERT INTO `emploi` (`id`, `libelle`, `description`, `note`) VALUES
 DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(120) NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
   `telephone` int(11) DEFAULT NULL,
@@ -97,13 +98,13 @@ CREATE TABLE IF NOT EXISTS `login` (
 -- Déchargement des données de la table `login`
 --
 
-INSERT INTO `login` (`id`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`, `noteqcm`) VALUES
-(1, 'admin', 'admin', NULL, 'admin', 'admin@gmail.com', 1, NULL),
-(5, 'utilisateur', 'utilisateur', 606060606, 'utilisateur', 'utilisateur@gmail.com', 0, NULL),
-(3, 'Partouche', 'Nathan', 684171272, 'nathan', 'nathanpartouche@hotmail.fr', 1, 20),
-(4, 'Nicolle', 'Dylan', 612345678, 'Dylan', 'dylan@gmail.com', 1, 16),
-(2, 'Gil Amaro', 'Dylan', 651206977, 'dylan', 'natsu2paris@yopmail.com', 1, NULL),
-(6, 'correcteur', 'correcteur', 651206977, 'Correcteur20', 'correcteur20@gmail.com', 1, NULL);
+INSERT INTO `login` (`id`, `login`, `nom`, `prenom`, `telephone`, `mdp`, `email`, `admin`, `noteqcm`) VALUES
+(1, 'admin', 'admin', 'admin', NULL, 'admin', 'admin@gmail.com', 1, NULL),
+(5, 'user', 'utilisateur', 'utilisateur', 606060606, 'utilisateur', 'utilisateur@gmail.com', 0, NULL),
+(3, 'nathan', 'Partouche', 'Nathan', 684171272, 'nathan', 'nathanpartouche@hotmail.fr', 1, 20),
+(4, 'ndylan', 'Nicolle', 'Dylan', 612345678, 'Dylan', 'dylan@gmail.com', 1, 16),
+(2, 'gdylan', 'Gil Amaro', 'Dylan', 651206977, 'dylan', 'natsu2paris@yopmail.com', 1, NULL),
+(6, 'correcteur', 'correcteur', 'correcteur', 651206977, 'Correcteur20', 'correcteur20@gmail.com', 1, NULL);
 
 -- --------------------------------------------------------
 

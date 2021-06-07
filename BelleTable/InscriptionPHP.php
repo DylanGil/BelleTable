@@ -6,7 +6,7 @@
 	{
 		$mdp= str_replace("'","''",$_POST['mdp']);
 		$email= str_replace("'","''",$_POST['email']);
-		$req = "SELECT * FROM login WHERE email = '{$email}' and mdp = '{$mdp}'";
+		$req = "SELECT * FROM login WHERE email = '{$email}' or login = '{$email}' and mdp = '{$mdp}'";
 		$res = mysqli_query($bdd,$req);
 
 		if (mysqli_num_rows($res) > 0)

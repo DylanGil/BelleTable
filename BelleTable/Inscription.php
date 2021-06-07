@@ -25,11 +25,14 @@
 			{	
 				$nom= $_POST["nom"];
 				$prenom= $_POST["prenom"];
+				$login= $_POST["login"];
 				$mdp= $_POST["mdp"];
 				$email= $_POST["email"];
 				$tel= $_POST["tel"];
-				$req = "SELECT * FROM login WHERE email = '$email'";
-				$res = mysqli_query($id,$req);
+				$req = "SELECT * FROM login WHERE login = '$login'";
+				$res = mysqli_query($bdd, $req);
+				$req3 = "SELECT * FROM login WHERE email = '$email'";
+				$res3 = mysqli_query($bdd, $req);
 
 				if (mysqli_num_rows($res) > 0)
 					{
@@ -37,10 +40,17 @@
 					}
 				else
 					{
-						$req2 = "INSERT INTO login (nom, prenom, telephone, mdp, email, admin) VALUES ('$nom','$prenom','$tel','$mdp', '$email', '0')";
-						$res = mysqli_query($id, $req2);
-						$accountCreate = true ;
-						header("location:Inscription.php?inscrit=1");
+						if (mysqli_num_rows($res3) > 0)
+						{
+							$errorAccountExist2 = true;
+						}
+						else
+						{
+							$req2 = "INSERT INTO login (login, nom, prenom, telephone, mdp, email, admin) VALUES ('$login', $nom','$prenom','$tel','$mdp', '$email', '0')";
+							$res = mysqli_query($bdd, $req2);
+							$accountCreate = true ;
+							header("location:Inscription.php?inscrit=1");
+						}
 					}
 			}
 
@@ -62,13 +72,14 @@
 				<center>
 					<?php if (isset($accountCreate)) echo "<p style=color:green>Votre compte a bien été crée</p>"; ?>
 					<?php if (isset($errorEmptyField)) echo "<span style=' display: block; color:red; width: 300px;'>Des erreur on étais détecté merci de corriger les erreurs suivantes :<br>" . $error . "</span>"; ?>
-					<?php if (isset($errorAccountExist)) echo "<p style=color:red>Erreur un compte avec cette email existe déjà!</p>"; ?>
+					<?php if (isset($errorAccountExist)) echo "<p style=color:red>Erreur un compte avec ce login existe déjà!</p>"; ?>
+					<?php if (isset($errorAccountExist2)) echo "<p style=color:red>Erreur un compte avec cette email existe déjà!</p>"; ?>
 					<form action="" method="POST" style="margin: inherit;"><h1>Inscription</h1>
 						<br>
 						<div class="inscription-form">
 							<div class="inscription-form-col">
 								<label for="nom">Nom*:</label><br>
-								<input type="text" name="nom" id="nom" placeholder="Nom:" > <br><br>
+								<input type="text" name="nom" id="nom" placeholder="Nom" > <br><br>
 							</div>
 							<div class="inscription-form-col">
 								<label for="prenom">Prenom*:</label><br>
@@ -77,19 +88,25 @@
 						</div>
 						<div class="inscription-form">
 							<div class="inscription-form-col">
-								<label for="mdp">Mot de passe*:</label><br>
-								<input type="password" name="mdp" id="mdp" placeholder="Mot de passe" ><br><br>
+								<label for="login">Login*:</label><br>
+								<input type="text" name="login" id="login" placeholder="Login" ><br><br>
 							</div>
 							<div class="inscription-form-col">
-								<label for="email">E-mail*:</label><br>
-								<input type="email" name="email" id="email" placeholder="azerty@gmail.com" ><br><br>
+								<label for="mdp">Mot de passe*:</label><br>
+								<input type="password" name="mdp" id="mdp" placeholder="Mot de passe" ><br><br>
 							</div>
 						</div>
 						<div class="inscription-form">
 							<div class="inscription-form-col">
+								<label for="email">E-mail*:</label><br>
+								<input type="email" name="email" id="email" placeholder="azerty@gmail.com" ><br><br>
+							</div>
+							<div class="inscription-form-col">
 								<label for="adresse">Adresse: </label><br>
 								<input type="text" name="adresse" placeholder="6 rue victor hugo"><br><br>
 							</div> 
+						</div>
+						<div class="inscription-form">
 							<div class="inscription-form-col">
 								<label for="tel">Telephone +33: </label><br>
 								<input type="tel" name="tel" placeholder="0601020304" pattern="[0-9]{9}"><br><br>
@@ -108,8 +125,8 @@
 					<?php if (isset($_GET["erreur1"])) echo "<p style=color:red>Erreur email ou mot de passe incorrect</p>"; ?>
 					<form action="InscriptionPHP.php" method="post" style="margin: inherit;"><h1>Se connecter</h1>
 						<br>
-						<label for="email2"> E-mail: </label><br>
-						<input type="email" name="email" id="email2" placeholder="admin@gmail.com" required><br><br>
+						<label for="email2"> E-mail ou login: </label><br>
+						<input type="text" name="email" id="email2" placeholder="admin@gmail.com" required><br><br>
 						<label for="mdp2">Mot de passe: </label><br>
 						<input type="password" name="mdp" id="mdp2" placeholder="Mot de passe" required><br><br>
 						<br>
