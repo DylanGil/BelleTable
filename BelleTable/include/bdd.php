@@ -5,6 +5,6 @@
 	} 
 	else // sinon se connecter a la base de données en ligne
 	{
-		$bdd = mysqli_connect("localhost", "ndd", "yyIn93?5","belle_table");
+		$bdd = mysqli_connect("localhost", "mdhaamlh", "Bal4o15@","BelleTable");
 	}
 ?>
